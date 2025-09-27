@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Donate & Support — KMB</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header__bar">
+        <div class="brand">
+          <a href="../index.html" class="brand__link">
+            <img
+              src="../assets/logo/kunjachanMissionaryLogo.png"
+              alt="KMB Logo"
+              class="brand__logo"
+            />
+            <span class="visually-hidden">KMB</span>
+          </a>
+        </div>
+        <button
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="primary-nav"
+          aria-label="Toggle navigation"
+        >
+          <span class="nav-toggle__bar"></span
+          ><span class="nav-toggle__bar"></span
+          ><span class="nav-toggle__bar"></span>
+        </button>
+        <nav id="primary-nav" class="primary-nav">
+          <ul class="nav__list">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="institutions.html">Institutions</a></li>
+            <li><a href="sponsors.html">Sponsors</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="events.html">Events</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a class="is-active" href="donate.html">Donate</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero hero--sub section">
+        <div class="container prose">
+          <p class="eyebrow">Support KMB</p>
+          <h1 class="hero__title gradient-text">Donate & Make a Difference</h1>
+          <p class="lead-sm">
+            Provide meals, clothing, sanitary items, educational materials or
+            funds. Every gift creates tangible change.
+          </p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Make a Donation</h2>
+          <form class="donate-form donate-form--grid card-soft">
+            <label for="donorName">Name</label>
+            <input
+              id="donorName"
+              type="text"
+              placeholder="Your Name"
+              required
+            />
+            <label for="donorEmail">Email</label>
+            <input
+              id="donorEmail"
+              type="email"
+              placeholder="you@example.com"
+              required
+            />
+            <label for="donationCategory">Donation Category</label>
+            <select id="donationCategory" required>
+              <option value="">Select a category</option>
+              <option value="meals">Meals / Food</option>
+              <option value="money">Monetary Support</option>
+              <option value="clothes">Clothing / Essentials</option>
+              <option value="sanitary">Sanitary Items</option>
+              <option value="education">Education / Books</option>
+              <option value="medicine">Medicine / Healthcare</option>
+            </select>
+            <label for="donationAmount">Amount (INR)</label>
+            <input
+              id="donationAmount"
+              type="number"
+              placeholder="1000"
+              min="1"
+            />
+            <label for="donationMethod">Payment Method</label>
+            <select id="donationMethod" required>
+              <option value="">Select a method</option>
+              <option value="upi">UPI</option>
+              <option value="card">Credit/Debit Card</option>
+              <option value="netbanking">Net Banking</option>
+            </select>
+            <button type="submit" class="btn btn--primary donate-submit">
+              Donate Now
+            </button>
+          </form>
+
+          <div class="grid-split mt-section">
+            <div class="card-soft-sm prose">
+              <h2 class="h5">In-Kind Support</h2>
+              <p>
+                You may also deliver or arrange pickup for staples (rice,
+                pulses, oil), fresh produce, disinfectants, bedding, clothing
+                and educational materials.
+              </p>
+              <p>
+                <a href="contact.html" class="btn btn--outline"
+                  >Schedule Drop‑off</a
+                >
+              </p>
+            </div>
+            <div class="card-soft-sm prose">
+              <h2 class="h5">Corporate / CSR</h2>
+              <p>
+                We can prepare a formal proposal including impact metrics,
+                compliance documentation and periodic reporting for corporate
+                social responsibility initiatives.
+              </p>
+              <p>
+                <a href="contact.html" class="btn btn--ghost"
+                  >Request CSR Dossier</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a class="brand__link" href="../index.html">
+            <img
+              src="../assets/logo/kunjachanMissionaryLogo.png"
+              alt="KMB Logo"
+              class="brand__logo brand__logo--footer"
+            />
+            <span class="visually-hidden">KMB</span>
+          </a>
+          <p class="footer__about">
+            A missionary home for compassionate care, dignity, and hope.
+          </p>
+        </div>
+        <nav class="footer__nav">
+          <h3 class="footer__title">Links</h3>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a href="institutions.html">Institutions</a></li>
+          </ul>
+        </nav>
+        <div class="footer__contact">
+          <h3 class="footer__title">Contact</h3>
+          <ul>
+            <li>Missionary Road, Kottayam</li>
+            <li>+91 481 000 0000</li>
+            <li>hello@kmb.org</li>
+          </ul>
+        </div>
+      </div>
+      <div class="container footer__bottom">
+        <p>
+          &copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

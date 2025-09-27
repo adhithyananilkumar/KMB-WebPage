@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Contact KMB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="container header__bar">
+    <div class="brand">
+      <a href="../index.html" class="brand__link">
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo"/>
+        <span class="visually-hidden">KMB</span>
+      </a>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav">
+      <ul class="nav__list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="institutions.html">Institutions</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a class="is-active" href="contact.html">Contact</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section id="contact" class="section">
+  <div class="container contact__grid">
+    <div class="prose">
+      <h1 class="section-title">Contact Us</h1>
+      <p>Missionary Road, Kottayam, Kerala 686001</p>
+      <p>Phone: +91 481 000 0000 &nbsp; • &nbsp; Email: hello@kmb.org</p>
+      <div class="cta-row">
+        <a class="btn btn--outline" target="_blank" rel="noopener" href="https://maps.google.com/?q=Kunjachan%20Missionary%20Bhavan%20Kottayam">Map</a>
+      </div>
+      <div class="mt-section card-soft-sm">
+        <h2 class="h5">Office Hours</h2>
+        <ul class="values-list">
+          <li>Mon–Fri: 09:00 – 17:30</li>
+          <li>Sat: 09:00 – 13:00</li>
+          <li>Sun / Public Holidays: Emergency & essential care only</li>
+        </ul>
+        <p class="small-note">Visits are coordinated—please schedule in advance for guided tours.</p>
+      </div>
+    </div>
+
+    <form class="contact__form card-soft" aria-label="Contact form">
+      <label class="visually-hidden" for="cName">Your Name</label>
+      <input id="cName" name="name" type="text" placeholder="Your Name" required/>
+      <label class="visually-hidden" for="cEmail">Email</label>
+      <input id="cEmail" name="email" type="email" placeholder="Email" required/>
+      <label class="visually-hidden" for="cSubject">Subject</label>
+      <input id="cSubject" name="subject" type="text" placeholder="Subject" required/>
+      <label class="visually-hidden" for="cMsg">Message</label>
+      <textarea id="cMsg" name="message" placeholder="Message" rows="6" required></textarea>
+      <div class="cta-row">
+        <button class="btn btn--primary" type="submit">Send</button>
+        <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://maps.google.com/?q=Kunjachan%20Missionary%20Bhavan%20Kottayam">Map</a>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand__link" href="../index.html">
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo brand__logo--footer"/>
+        <span class="visually-hidden">KMB</span>
+      </a>
+      <p class="footer__about">A missionary home for compassionate care, dignity, and hope.</p>
+    </div>
+    <nav class="footer__nav">
+      <h3 class="footer__title">Links</h3>
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+    <div class="footer__contact">
+      <h3 class="footer__title">Contact</h3>
+      <ul>
+        <li>Missionary Road, Kottayam</li>
+        <li>+91 481 000 0000</li>
+        <li>hello@kmb.org</li>
+      </ul>
+    </div>
+    <div class="footer__newsletter">
+      <h3 class="footer__title">Newsletter</h3>
+      <form class="footer__form">
+        <label class="visually-hidden" for="footerEmail">Email</label>
+        <input id="footerEmail" type="email" placeholder="Enter your email" required/>
+        <button class="btn btn--accent" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>&copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights reserved.</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
