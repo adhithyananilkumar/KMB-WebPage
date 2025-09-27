@@ -1,174 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Kunjachan Missionary Bhavan (KMB) — Compassion in Action</title>
-    <meta
-      name="description"
-      content="Kunjachan Missionary Bhavan — home for care, dignity and hope. Learn about our institutions, daily impact, sponsors, volunteer opportunities, and Aathmiya (KMB Software)."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>KMB Gallery</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
 </head>
 <body>
+<header class="site-header">
+  <div class="container header__bar">
+    <div class="brand">
+      <a href="../index.html" class="brand__link">
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo"/>
+        <span class="visually-hidden">KMB</span>
+      </a>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav">
+      <ul class="nav__list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="institutions.html">Institutions</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a class="is-active" href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <header class="site-header" role="banner">
-      <div class="container header__bar">
-        <div class="brand">
-          <a
-            href="/KMB-WebPage/index.html"
-            class="brand__link"
-            aria-label="Kunjachan Missionary Bhavan Home"
-            >KMB</a
-          >
-        </div>
+<section id="gallery" class="section">
+  <div class="container">
+    <div class="section__head">
+      <h1 class="section-title">Photo & Video Gallery</h1>
+      <p class="section__lead">A glimpse of life at KMB—care, meals, activities, therapy and community. Filter by theme to explore.</p>
+    </div>
 
-        <button
-          class="nav-toggle"
-          aria-expanded="false"
-          aria-controls="primary-nav"
-          aria-label="Toggle navigation"
-        >
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-        </button>
+    <div class="tags-filter">
+      <button class="tag is-active" data-gallery-filter="">All</button>
+      <button class="tag" data-gallery-filter="meals">Meals</button>
+      <button class="tag" data-gallery-filter="learning">Learning</button>
+      <button class="tag" data-gallery-filter="therapy">Therapy</button>
+      <button class="tag" data-gallery-filter="community">Community</button>
+      <button class="tag" data-gallery-filter="staff">Staff</button>
+      <button class="tag" data-gallery-filter="celebration">Celebration</button>
+    </div>
 
-        <nav
-          id="primary-nav"
-          class="primary-nav"
-          role="navigation"
-          aria-label="Primary"
-        >
-                 <ul class="nav__list">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="institutions.html">Institutions</a></li>
-            <li><a href="aathmiya.html">Aathmiya</a></li>
-            <li><a href="sponsors.html">Sponsors</a></li>
-            <li><a href="volunteer.html">Volunteer</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-          <div class="nav__cta">
-            <a class="btn btn--outline" href="#donate">Donate</a>
-          </div>
-        </nav>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-panel" data-cat="meals">
+        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#14b8a6"/><circle cx="120" cy="90" r="38" fill="#fff" opacity=".25"/></svg>
+        <span class="gallery-label">Meal Service</span>
       </div>
-    </header>
-      
+      <div class="gallery-panel" data-cat="learning">
+        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#0ea5e9"/><rect x="55" y="45" width="130" height="90" rx="12" fill="#fff" opacity=".18"/></svg>
+        <span class="gallery-label">Study Session</span>
+      </div>
+      <div class="gallery-panel" data-cat="therapy">
+        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#f59e0b"/><circle cx="120" cy="90" r="52" fill="#fff" opacity=".18"/></svg>
+        <span class="gallery-label">Therapy Room</span>
+      </div>
+      <div class="gallery-panel" data-cat="community">
+        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#14b8a6"/><path d="M40 140h160v10H40z" fill="#fff" opacity=".2"/></svg>
+        <span class="gallery-label">Gathering</span>
+      </div>
+      <div class="gallery-panel" data-cat="staff">
+        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#0ea5e9"/><circle cx="80" cy="80" r="26" fill="#fff" opacity=".22"/><circle cx="160" cy="100" r="40" fill="#fff" opacity=".14"/></svg>
+        <span class="gallery-label">Staff Meeting</span>
+      </div>
+      <div class="gallery-panel" data-cat="celebration">
+        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#f59e0b"/><rect x="70" y="55" width="100" height="70" rx="14" fill="#fff" opacity=".25"/></svg>
+        <span class="gallery-label">Celebration</span>
+      </div>
+    </div>
 
-      <!-- GALLERY -->
-      <section id="gallery" class="section gallery">
-        <div class="container">
-          <div class="section__head">
-            <h2>Photo & Video Gallery</h2>
-            <p class="section__lead">
-              A glimpse of life at KMB—meals, activities, therapy, and
-              community.
-            </p>
-          </div>
-          <div class="gallery-grid">
-            <figure
-              class="media-placeholder gallery__item"
-              role="img"
-              aria-label="Placeholder image: meal service"
-              data-alt="Meal service"
-            ></figure>
-            <figure
-              class="media-placeholder gallery__item"
-              role="img"
-              aria-label="Placeholder image: study session"
-              data-alt="Study session"
-            ></figure>
-            <figure
-              class="media-placeholder gallery__item"
-              role="img"
-              aria-label="Placeholder image: therapy room"
-              data-alt="Therapy room"
-            ></figure>
-            <figure
-              class="media-placeholder gallery__item"
-              role="img"
-              aria-label="Placeholder image: community prayer"
-              data-alt="Community prayer"
-            ></figure>
-            <figure
-              class="media-placeholder gallery__item"
-              role="img"
-              aria-label="Placeholder image: staff meeting"
-              data-alt="Staff meeting"
-            ></figure>
-            <figure
-              class="media-placeholder gallery__item"
-              role="img"
-              aria-label="Placeholder image: celebration"
-              data-alt="Celebration"
-            ></figure>
-          </div>
-        </div>
-      </section>
+    <div class="cta-row mt-section">
+      <a class="btn btn--primary" href="contact.html">Contribute Media</a>
+      <a class="btn btn--outline" href="about.html">Learn More</a>
+    </div>
+  </div>
+</section>
 
-
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div class="container footer__grid">
-          <div class="footer__brand">
-            <a class="brand__link" href="#" aria-label="KMB home">KMB</a>
-            <p class="footer__about">
-              A missionary home for compassionate care, dignity, and hope.
-            </p>
-          </div>
-          <nav class="footer__nav" aria-label="Footer links">
-            <h3 class="footer__title">Useful Links</h3>
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#institutions">Institutions</a></li>
-              <li><a href="#software">Aathmiya</a></li>
-              <li><a href="#sponsors">Sponsors</a></li>
-              <li><a href="#volunteer">Volunteer</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-          <div class="footer__contact">
-            <h3 class="footer__title">Contact</h3>
-            <ul>
-              <li>Missionary Road, Kottayam</li>
-              <li>+91 481 000 0000</li>
-              <li>hello@kmb.org</li>
-            </ul>
-          </div>
-          <div class="footer__newsletter">
-            <h3 class="footer__title">Stay in touch</h3>
-            <form class="footer__form" aria-label="Footer newsletter signup">
-              <label class="visually-hidden" for="footerEmail"
-                >Email address</label
-              >
-              <input
-                id="footerEmail"
-                type="email"
-                placeholder="Enter your email"
-                required
-              />
-              <button type="submit" class="btn btn--accent">Subscribe</button>
-            </form>
-          </div>
-        </div>
-        <div class="container footer__bottom">
-          <p>
-            &copy; <span id="year"></span> Kunjachan Missionary Bhavan. All
-            rights reserved.
-          </p>
-        </div>
-      </footer>
-    <script src="../assets/js/main.js"></script>
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand__link" href="../index.html">
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo brand__logo--footer"/>
+        <span class="visually-hidden">KMB</span>
+      </a>
+      <p class="footer__about">A missionary home for compassionate care, dignity, and hope.</p>
+    </div>
+    <nav class="footer__nav">
+      <h3 class="footer__title">Links</h3>
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+    <div class="footer__contact">
+      <h3 class="footer__title">Contact</h3>
+      <ul>
+        <li>Missionary Road, Kottayam</li>
+        <li>+91 481 000 0000</li>
+        <li>hello@kmb.org</li>
+      </ul>
+    </div>
+    <div class="footer__newsletter">
+      <h3 class="footer__title">Newsletter</h3>
+      <form class="footer__form">
+        <label class="visually-hidden" for="footerEmail">Email</label>
+        <input id="footerEmail" type="email" placeholder="Enter your email" required/>
+        <button type="submit" class="btn btn--accent">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>&copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights reserved.</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
- 

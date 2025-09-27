@@ -1,163 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Kunjachan Missionary Bhavan (KMB) — Compassion in Action</title>
-    <meta
-      name="description"
-      content="Kunjachan Missionary Bhavan — home for care, dignity and hope. Learn about our institutions, daily impact, sponsors, volunteer opportunities, and Aathmiya (KMB Software)."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Events & Announcements — KMB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
 </head>
 <body>
+<header class="site-header">
+  <div class="container header__bar">
+    <div class="brand">
+      <a href="../index.html" class="brand__link">
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" class="brand__logo" alt="KMB Logo"/>
+        <span class="visually-hidden">KMB</span>
+      </a>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav">
+      <ul class="nav__list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="institutions.html">Institutions</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a class="is-active" href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <header class="site-header" role="banner">
-      <div class="container header__bar">
-        <div class="brand">
-          <a
-            href="/KMB-WebPage/index.html"
-            class="brand__link"
-            aria-label="Kunjachan Missionary Bhavan Home"
-            >KMB</a
-          >
-        </div>
+<section id="events" class="section">
+  <div class="container">
+    <div class="section__head">
+      <h1 class="section-title">Events & Announcements</h1>
+      <p class="badge-urgent" role="note" aria-label="Urgent">Winter blanket drive — donations needed this week.</p>
+      <p class="section__lead mt-xs">Stay connected through our health camps, volunteer drives, celebrations and awareness programs.</p>
+    </div>
 
-        <button
-          class="nav-toggle"
-          aria-expanded="false"
-          aria-controls="primary-nav"
-          aria-label="Toggle navigation"
-        >
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-        </button>
+    <div class="event-filters">
+      <input id="eventSearch" type="search" placeholder="Search events..." aria-label="Search events"/>
+      <select id="eventCategory" aria-label="Filter by category">
+        <option value="">All Types</option>
+        <option value="health">Health</option>
+        <option value="volunteer">Volunteer</option>
+        <option value="celebration">Celebration</option>
+        <option value="awareness">Awareness</option>
+        <option value="fundraising">Fundraising</option>
+      </select>
+      <select id="eventStatus" aria-label="Filter by status">
+        <option value="">Upcoming & Past</option>
+        <option value="upcoming">Upcoming Only</option>
+        <option value="past">Past Only</option>
+      </select>
+    </div>
 
-        <nav
-          id="primary-nav"
-          class="primary-nav"
-          role="navigation"
-          aria-label="Primary"
-        >
-          <ul class="nav__list">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="institutions.html">Institutions</a></li>
-            <li><a href="aathmiya.html">Aathmiya</a></li>
-            <li><a href="sponsors.html">Sponsors</a></li>
-            <li><a href="volunteer.html">Volunteer</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-          <div class="nav__cta">
-            <a class="btn btn--outline" href="#donate">Donate</a>
-          </div>
-        </nav>
-      </div>
-    </header>
-      <!-- EVENTS & ANNOUNCEMENTS -->
-      <section id="events" class="section events">
-        <div class="container">
-          <div class="section__head">
-            <h2>Events & Announcements</h2>
-            <p class="urgent" role="note" aria-label="Urgent announcement">
-              Urgent: Winter blanket drive — donations needed this week.
-            </p>
-          </div>
+    <h2 class="h5 mt-section-sm mb-xs">Upcoming</h2>
+    <div class="event-grid" id="upcomingEvents">
+      <article class="event card-lined" data-title="Community Health Camp" data-category="health" data-status="upcoming" data-date="2025-10-20">
+        <div class="event__date">Oct 20</div>
+        <h3 class="event__title">Community Health Camp</h3>
+        <p class="event__desc">Free checkups, medicine distribution & nutrition guidance.</p>
+        <div class="event__meta"><span>Location: Main Campus</span> • <span>Time: 9 AM</span></div>
+        <a class="btn btn--ghost" href="contact.html">See Details</a>
+      </article>
+      <article class="event card-lined" data-title="Volunteer Onboarding" data-category="volunteer" data-status="upcoming" data-date="2025-11-05">
+        <div class="event__date">Nov 05</div>
+        <h3 class="event__title">Volunteer Onboarding</h3>
+        <p class="event__desc">Orientation & safeguarding briefing for new volunteers.</p>
+        <div class="event__meta"><span>Location: Hall B</span> • <span>Time: 11 AM</span></div>
+        <a class="btn btn--ghost" href="contact.html">Register</a>
+      </article>
+      <article class="event card-lined" data-title="Annual Charity Feast" data-category="celebration" data-status="upcoming" data-date="2025-12-12">
+        <div class="event__date">Dec 12</div>
+        <h3 class="event__title">Annual Charity Feast</h3>
+        <p class="event__desc">Community celebration with shared meals & gratitude.</p>
+        <div class="event__meta"><span>Location: Courtyard</span> • <span>Time: 6 PM</span></div>
+        <a class="btn btn--ghost" href="contact.html">Join Us</a>
+      </article>
+      <article class="event card-lined" data-title="Mental Wellness Workshop" data-category="awareness" data-status="upcoming" data-date="2025-11-22">
+        <div class="event__date">Nov 22</div>
+        <h3 class="event__title">Mental Wellness Workshop</h3>
+        <p class="event__desc">Interactive session on stress resilience & healing.</p>
+        <div class="event__meta"><span>Location: Therapy Block</span> • <span>Time: 2 PM</span></div>
+        <a class="btn btn--ghost" href="contact.html">Attend</a>
+      </article>
+      <article class="event card-lined" data-title="Children’s Education Fair" data-category="awareness" data-status="upcoming" data-date="2025-10-30">
+        <div class="event__date">Oct 30</div>
+        <h3 class="event__title">Children’s Education Fair</h3>
+        <p class="event__desc">Showcasing learning progress & creative projects.</p>
+        <div class="event__meta"><span>Location: Learning Center</span> • <span>Time: 10 AM</span></div>
+        <a class="btn btn--ghost" href="contact.html">Visit</a>
+      </article>
+    </div>
 
-          <div class="event-grid">
-            <article class="event">
-              <div class="event__date">Oct 20</div>
-              <h3 class="event__title">Community Health Camp</h3>
-              <p class="event__desc">
-                Free checkups and medicine distribution for local families.
-              </p>
-              <a class="btn btn--ghost" href="#contact">See Details</a>
-            </article>
-            <article class="event">
-              <div class="event__date">Nov 05</div>
-              <h3 class="event__title">Volunteer Onboarding</h3>
-              <p class="event__desc">
-                Orientation and training session for new volunteers.
-              </p>
-              <a class="btn btn--ghost" href="#contact">Register</a>
-            </article>
-            <article class="event">
-              <div class="event__date">Dec 12</div>
-              <h3 class="event__title">Annual Charity Feast</h3>
-              <p class="event__desc">
-                Celebrate our community with food, music, and gratitude.
-              </p>
-              <a class="btn btn--ghost" href="#contact">Join Us</a>
-            </article>
-          </div>
+    <h2 class="h5 mt-section">Recent / Past</h2>
+    <div class="event-grid" id="pastEvents">
+      <article class="event card-lined" data-title="Spring Medical Drive" data-category="health" data-status="past" data-date="2025-04-10">
+        <div class="event__date">Apr 10</div>
+        <h3 class="event__title">Spring Medical Drive</h3>
+        <p class="event__desc">Multi-discipline screenings & assistance program.</p>
+        <div class="event__meta"><span>400 served</span></div>
+        <a class="btn btn--ghost" href="contact.html">Report</a>
+      </article>
+      <article class="event card-lined" data-title="Skill Training Week" data-category="volunteer" data-status="past" data-date="2025-05-15">
+        <div class="event__date">May 15</div>
+        <h3 class="event__title">Skill Training Week</h3>
+        <p class="event__desc">Vocational & digital literacy modules delivered.</p>
+        <div class="event__meta"><span>60 participants</span></div>
+        <a class="btn btn--ghost" href="contact.html">Summary</a>
+      </article>
+      <article class="event card-lined" data-title="Nutrition Awareness Walk" data-category="awareness" data-status="past" data-date="2025-07-09">
+        <div class="event__date">Jul 09</div>
+        <h3 class="event__title">Nutrition Awareness Walk</h3>
+        <p class="event__desc">Community outreach on balanced diets & hydration.</p>
+        <div class="event__meta"><span>Local outreach</span></div>
+        <a class="btn btn--ghost" href="contact.html">Highlights</a>
+      </article>
+    </div>
 
-          <div class="cta-row">
-            <a class="btn btn--primary" href="#contact">See All Events</a>
-          </div>
-        </div>
-      </section>
+    <div class="faq card-soft-sm mt-section">
+      <h2 class="h5">Event FAQ</h2>
+      <details open>
+        <summary>How do I participate?</summary>
+        <p>Use the button on each event card or reach us via the contact page.</p>
+      </details>
+      <details>
+        <summary>Can I sponsor a specific event?</summary>
+        <p>Yes—sponsorship can be directed to event costs (meals, materials, logistics).</p>
+      </details>
+      <details>
+        <summary>Do events accept walk-ins?</summary>
+        <p>Some do, but pre-registration helps us plan responsibly.</p>
+      </details>
+    </div>
 
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div class="container footer__grid">
-          <div class="footer__brand">
-            <a class="brand__link" href="#" aria-label="KMB home">KMB</a>
-            <p class="footer__about">
-              A missionary home for compassionate care, dignity, and hope.
-            </p>
-          </div>
-          <nav class="footer__nav" aria-label="Footer links">
-            <h3 class="footer__title">Useful Links</h3>
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#institutions">Institutions</a></li>
-              <li><a href="#software">Aathmiya</a></li>
-              <li><a href="#sponsors">Sponsors</a></li>
-              <li><a href="#volunteer">Volunteer</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-          <div class="footer__contact">
-            <h3 class="footer__title">Contact</h3>
-            <ul>
-              <li>Missionary Road, Kottayam</li>
-              <li>+91 481 000 0000</li>
-              <li>hello@kmb.org</li>
-            </ul>
-          </div>
-          <div class="footer__newsletter">
-            <h3 class="footer__title">Stay in touch</h3>
-            <form class="footer__form" aria-label="Footer newsletter signup">
-              <label class="visually-hidden" for="footerEmail"
-                >Email address</label
-              >
-              <input
-                id="footerEmail"
-                type="email"
-                placeholder="Enter your email"
-                required
-              />
-              <button type="submit" class="btn btn--accent">Subscribe</button>
-            </form>
-          </div>
-        </div>
-        <div class="container footer__bottom">
-          <p>
-            &copy; <span id="year"></span> Kunjachan Missionary Bhavan. All
-            rights reserved.
-          </p>
-        </div>
-      </footer>
-    <script src="../assets/js/main.js"></script>
+    <div class="cta-row mt-section">
+      <a class="btn btn--primary" href="contact.html">Propose an Event</a>
+      <a class="btn btn--outline" href="volunteer.html">Volunteer for Events</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand__link" href="../index.html">
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo brand__logo--footer"/>
+        <span class="visually-hidden">KMB</span>
+      </a>
+      <p class="footer__about">A missionary home for compassionate care, dignity, and hope.</p>
+    </div>
+    <nav class="footer__nav">
+      <h3 class="footer__title">Links</h3>
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+    <div class="footer__contact">
+      <h3 class="footer__title">Contact</h3>
+      <ul>
+        <li>Missionary Road, Kottayam</li>
+        <li>+91 481 000 0000</li>
+        <li>hello@kmb.org</li>
+      </ul>
+    </div>
+    <div class="footer__newsletter">
+      <h3 class="footer__title">Newsletter</h3>
+      <form class="footer__form">
+        <label class="visually-hidden" for="footerEmail">Email</label>
+        <input id="footerEmail" type="email" placeholder="Enter your email" required/>
+        <button type="submit" class="btn btn--accent">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>&copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights reserved.</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
- 

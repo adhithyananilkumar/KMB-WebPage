@@ -1,240 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="utf-8" />
+  <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Kunjachan Missionary Bhavan (KMB) — Compassion in Action</title>
-    <meta
-      name="description"
-      content="Kunjachan Missionary Bhavan — home for care, dignity and hope. Learn about our institutions, daily impact, sponsors, volunteer opportunities, and Aathmiya (KMB Software)."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Volunteer — KMB</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="../assets/css/style.css" />
-</head>
-<body>
-
-    <header class="site-header" role="banner">
+  </head>
+  <body>
+    <header class="site-header">
       <div class="container header__bar">
         <div class="brand">
-          <a
-            href="/KMB-WebPage/index.html"
-            class="brand__link"
-            aria-label="Kunjachan Missionary Bhavan Home"
-            >KMB</a
-          >
+          <a href="../index.html" class="brand__link">
+            <img
+              src="../assets/logo/kunjachanMissionaryLogo.png"
+              alt="KMB Logo"
+              class="brand__logo"
+            />
+            <span class="visually-hidden">KMB</span>
+          </a>
         </div>
-
         <button
           class="nav-toggle"
           aria-expanded="false"
           aria-controls="primary-nav"
           aria-label="Toggle navigation"
         >
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
+          <span class="nav-toggle__bar"></span
+          ><span class="nav-toggle__bar"></span
+          ><span class="nav-toggle__bar"></span>
         </button>
-
-        <nav
-          id="primary-nav"
-          class="primary-nav"
-          role="navigation"
-          aria-label="Primary"
-        >       <ul class="nav__list">
+        <nav id="primary-nav" class="primary-nav">
+          <ul class="nav__list">
             <li><a href="../index.html">Home</a></li>
             <li><a href="institutions.html">Institutions</a></li>
-            <li><a href="aathmiya.html">Aathmiya</a></li>
             <li><a href="sponsors.html">Sponsors</a></li>
-            <li><a href="volunteer.html">Volunteer</a></li>
+            <li><a class="is-active" href="volunteer.html">Volunteer</a></li>
             <li><a href="events.html">Events</a></li>
             <li><a href="gallery.html">Gallery</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="contact.html">Contact</a></li>
+            <li><a href="donate.html">Donate</a></li>
           </ul>
-          <div class="nav__cta">
-            <a class="btn btn--outline" href="#donate">Donate</a>
-          </div>
         </nav>
       </div>
     </header>
 
-<!-- VOLUNTEER & CAREERS -->
-      <section id="volunteer" class="section volunteer">
-        <div class="container volunteer__grid">
-          <div>
-            <h2>Join Us in Serving Others</h2>
-            <p class="section__lead">
-              Volunteer your time, skills, or join our team. Together, we change
-              lives.
-            </p>
-            <ul class="checklist">
-              <li>Meal preparation and distribution</li>
-              <li>Teaching and mentorship</li>
-              <li>Medical and therapy assistance</li>
-              <li>Events and logistics</li>
-            </ul>
-            <div class="cta-row">
-              <a class="btn btn--primary" href="#contact"
-                >Register as a Volunteer</a
-              >
-              <a class="btn btn--outline" href="#contact">View Openings</a>
-            </div>
-          </div>
-          <figure
-            class="media-placeholder volunteer__media"
-            role="img"
-            aria-label="Placeholder for volunteers in action"
-            data-alt="Volunteers in action"
-          ></figure>
-        </div>
-      </section>
-
-      <!-- DAILY IMPACT COUNTERS -->
-      <section id="impact" class="section counters">
-        <div class="container">
-          <div class="section__head">
-            <h2>Daily Impact</h2>
-            <p class="section__lead">
-              Live or static counters demonstrating ongoing care.
-            </p>
-          </div>
-          <div class="counter-grid">
-            <div class="counter">
-              <div class="counter__num" data-count="100">0</div>
-              <div class="counter__label">Meals served today</div>
-            </div>
-            <div class="counter">
-              <div class="counter__num" data-count="320">0</div>
-              <div class="counter__label">People under care</div>
-            </div>
-            <div class="counter">
-              <div class="counter__num" data-count="58">0</div>
-              <div class="counter__label">Volunteers this month</div>
-            </div>
+    <!-- VOLUNTEER HERO / INTRO -->
+    <section id="volunteer" class="section section--band volunteer-section">
+      <div
+        class="container volunteer__grid volunteer__grid--balanced volunteer-hero"
+      >
+        <div class="prose volunteer-intro">
+          <h1 class="section-title volunteer-title-tight">
+            Join Us in Serving Others
+          </h1>
+          <p class="lead-sm">
+            Volunteer your time, skills, or join our team. Together we change
+            lives.
+          </p>
+          <ul class="checklist checklist--em volunteer-list">
+            <li>Meal preparation & distribution</li>
+            <li>Teaching & mentorship</li>
+            <li>Medical / therapy assistance</li>
+            <li>Events & logistics</li>
+          </ul>
+          <div class="cta-row volunteer-cta-row">
+            <a class="btn btn--primary" href="contact.html"
+              >Register as a Volunteer</a
+            >
+            <a class="btn btn--outline" href="contact.html">View Openings</a>
           </div>
         </div>
-      </section>
 
-      <!-- REVIEWS -->
-      <section id="reviews" class="section reviews">
-        <div class="container">
-          <div class="section__head">
-            <h2>What People Say About Us</h2>
-            <p class="section__lead">
-              Voices from volunteers, sponsors, and guardians.
+        <div class="illustration illustration--volunteer" aria-hidden="true">
+          <svg viewBox="0 0 420 420" class="illustration__svg">
+            <rect width="420" height="420" rx="40" fill="#f3f8f9" />
+            <circle cx="210" cy="150" r="90" fill="#06b6a8" />
+            <rect
+              x="110"
+              y="255"
+              width="200"
+              height="125"
+              rx="28"
+              fill="#10a4dd"
+            />
+            <circle cx="160" cy="300" r="22" fill="#fff" opacity=".92" />
+            <circle cx="210" cy="300" r="22" fill="#fff" opacity=".92" />
+            <circle cx="260" cy="300" r="22" fill="#fff" opacity=".92" />
+            <rect
+              x="155"
+              y="338"
+              width="110"
+              height="20"
+              rx="10"
+              fill="#fff"
+              opacity=".9"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <!-- DETAILS (PROCESS + FAQ) -->
+      <div class="container volunteer-details">
+        <div class="process card-soft-sm process-card">
+          <h2 class="process-heading">How to Get Started</h2>
+          <ol class="process__list numbered-steps">
+            <li>
+              <span class="step-badge">1</span
+              ><span>Submit a short interest form</span>
+            </li>
+            <li>
+              <span class="step-badge">2</span
+              ><span>Attend orientation (online / on-site)</span>
+            </li>
+            <li>
+              <span class="step-badge">3</span
+              ><span>Background & safety briefing (if required)</span>
+            </li>
+            <li>
+              <span class="step-badge">4</span
+              ><span>Role allocation & mentorship pairing</span>
+            </li>
+            <li>
+              <span class="step-badge">5</span
+              ><span>Begin serving with ongoing feedback</span>
+            </li>
+          </ol>
+        </div>
+
+        <div class="faq card-soft-sm faq-card">
+          <h2 class="faq-heading">Volunteer FAQ</h2>
+          <details open>
+            <summary>Minimum commitment?</summary>
+            <p>Preferably 4 hours weekly for continuity of care.</p>
+          </details>
+          <details>
+            <summary>Can students apply?</summary>
+            <p>
+              Yes, supervised student involvement with service documentation is
+              welcomed.
             </p>
-          </div>
+          </details>
+          <details>
+            <summary>Professional skill volunteering?</summary>
+            <p>
+              Medical, counseling, legal, education, therapy, IT, nutrition &
+              logistics expertise are valuable.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
 
-          <div class="review-list" aria-live="polite">
-            <article class="review">
-              <figure
-                class="avatar-placeholder"
-                role="img"
-                aria-label="Avatar placeholder"
-                data-alt="Reviewer avatar"
-              ></figure>
-              <div class="review__body">
-                <h3 class="review__name">Asha, Volunteer</h3>
-                <p>
-                  “Serving at KMB taught me the power of small acts of kindness.
-                  The team is dedicated and compassionate.”
-                </p>
-              </div>
-            </article>
-            <article class="review">
-              <figure
-                class="avatar-placeholder"
-                role="img"
-                aria-label="Avatar placeholder"
-                data-alt="Reviewer avatar"
-              ></figure>
-              <div class="review__body">
-                <h3 class="review__name">Thomas, Sponsor</h3>
-                <p>
-                  “Transparent, organized, and impactful. I’m confident my
-                  support reaches those who need it most.”
-                </p>
-              </div>
-            </article>
-            <article class="review">
-              <figure
-                class="avatar-placeholder"
-                role="img"
-                aria-label="Avatar placeholder"
-                data-alt="Reviewer avatar"
-              ></figure>
-              <div class="review__body">
-                <h3 class="review__name">Mary, Guardian</h3>
-                <p>
-                  “My mother receives caring attention every day—KMB brought
-                  dignity and comfort back to her life.”
-                </p>
-              </div>
-            </article>
+    <!-- IMPACT -->
+    <section id="impact" class="section bg-soft">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section-title">Daily Impact</h2>
+          <p class="section__lead">Progress renewed every day.</p>
+        </div>
+        <div class="counter-grid">
+          <div class="counter card-soft">
+            <div class="counter__num" data-count="100">0</div>
+            <div class="counter__label">Meals served today</div>
           </div>
-
-          <div class="cta-row">
-            <a class="btn btn--outline" href="#contact">Write a Review</a>
+          <div class="counter card-soft">
+            <div class="counter__num" data-count="320">0</div>
+            <div class="counter__label">People under care</div>
+          </div>
+          <div class="counter card-soft">
+            <div class="counter__num" data-count="58">0</div>
+            <div class="counter__label">Volunteers this month</div>
           </div>
         </div>
-      </section>
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div class="container footer__grid">
-          <div class="footer__brand">
-            <a class="brand__link" href="#" aria-label="KMB home">KMB</a>
-            <p class="footer__about">
-              A missionary home for compassionate care, dignity, and hope.
-            </p>
-          </div>
-          <nav class="footer__nav" aria-label="Footer links">
-            <h3 class="footer__title">Useful Links</h3>
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#institutions">Institutions</a></li>
-              <li><a href="#software">Aathmiya</a></li>
-              <li><a href="#sponsors">Sponsors</a></li>
-              <li><a href="#volunteer">Volunteer</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-          <div class="footer__contact">
-            <h3 class="footer__title">Contact</h3>
-            <ul>
-              <li>Missionary Road, Kottayam</li>
-              <li>+91 481 000 0000</li>
-              <li>hello@kmb.org</li>
-            </ul>
-          </div>
-          <div class="footer__newsletter">
-            <h3 class="footer__title">Stay in touch</h3>
-            <form class="footer__form" aria-label="Footer newsletter signup">
-              <label class="visually-hidden" for="footerEmail"
-                >Email address</label
-              >
-              <input
-                id="footerEmail"
-                type="email"
-                placeholder="Enter your email"
-                required
-              />
-              <button type="submit" class="btn btn--accent">Subscribe</button>
-            </form>
-          </div>
-        </div>
-        <div class="container footer__bottom">
-          <p>
-            &copy; <span id="year"></span> Kunjachan Missionary Bhavan. All
-            rights reserved.
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section">
+      <div class="container">
+        <div class="section__head">
+          <h2 class="section-title">What People Say</h2>
+          <p class="section__lead">
+            Voices of volunteers, sponsors, and families.
           </p>
         </div>
-      </footer>
+        <div class="review-list">
+          <article class="review card-soft-sm">
+            <div class="avatar avatar--emerald"></div>
+            <div class="review__body">
+              <h3 class="review__name">Asha, Volunteer</h3>
+              <p>
+                “Serving at KMB taught me the power of small acts of kindness.”
+              </p>
+            </div>
+          </article>
+          <article class="review card-soft-sm">
+            <div class="avatar avatar--blue"></div>
+            <div class="review__body">
+              <h3 class="review__name">Thomas, Sponsor</h3>
+              <p>“Transparent, organized and impactful.”</p>
+            </div>
+          </article>
+          <article class="review card-soft-sm">
+            <div class="avatar avatar--amber"></div>
+            <div class="review__body">
+              <h3 class="review__name">Mary, Guardian</h3>
+              <p>“My mother receives caring attention every day.”</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer__grid">
+        <div class="footer__brand">
+          <a class="brand__link" href="../index.html">
+            <img
+              src="../assets/logo/kunjachanMissionaryLogo.png"
+              alt="KMB Logo"
+              class="brand__logo brand__logo--footer"
+            />
+            <span class="visually-hidden">KMB</span>
+          </a>
+          <p class="footer__about">
+            A missionary home for compassionate care, dignity, and hope.
+          </p>
+        </div>
+        <nav class="footer__nav">
+          <h3 class="footer__title">Links</h3>
+          <ul>
+            <li><a href="../index.html#about">About</a></li>
+            <li><a href="institutions.html">Institutions</a></li>
+            <li><a href="donate.html">Donate</a></li>
+          </ul>
+        </nav>
+        <div class="footer__contact">
+          <h3 class="footer__title">Contact</h3>
+          <ul>
+            <li>Missionary Road, Kottayam</li>
+            <li>+91 481 000 0000</li>
+            <li>hello@kmb.org</li>
+          </ul>
+        </div>
+        <div class="footer__newsletter">
+          <h3 class="footer__title">Newsletter</h3>
+          <form class="footer__form">
+            <label class="visually-hidden" for="footerEmail">Email</label>
+            <input
+              id="footerEmail"
+              type="email"
+              placeholder="Enter your email"
+              required
+            />
+            <button class="btn btn--accent">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="container footer__bottom">
+        <p>
+          &copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
     <script src="../assets/js/main.js"></script>
-</body>
+  </body>
 </html>
- 

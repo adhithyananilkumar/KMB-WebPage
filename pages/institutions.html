@@ -1,275 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Kunjachan Missionary Bhavan (KMB) — Compassion in Action</title>
-    <meta
-      name="description"
-      content="Kunjachan Missionary Bhavan — home for care, dignity and hope. Learn about our institutions, daily impact, sponsors, volunteer opportunities, and Aathmiya (KMB Software)."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../assets/css/style.css" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>KMB Institutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
 </head>
 <body>
+<header class="site-header">
+  <div class="container header__bar">
+    <div class="brand">
+      <a href="../index.html" class="brand__link">
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" class="brand__logo" alt="KMB Logo"/>
+        <span class="visually-hidden">KMB</span>
+      </a>
+    </div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+      <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
+    </button>
+    <nav id="primary-nav" class="primary-nav">
+      <ul class="nav__list">
+        <li><a href="../index.html">Home</a></li>
+        <li><a class="is-active" href="institutions.html">Institutions</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
-    <header class="site-header" role="banner">
-      <div class="container header__bar">
-        <div class="brand">
-          <a
-            href="/KMB-WebPage/index.html"
-            class="brand__link"
-            aria-label="Kunjachan Missionary Bhavan Home"
-            >KMB</a
-          >
+<section id="institutions" class="section">
+  <div class="container">
+    <div class="section__head">
+      <h1 class="section-title">Our Institutions</h1>
+      <p class="section__lead">Browse by name, category, or city. Click a card for details and directions.</p>
+    </div>
+
+    <div class="filters filters--bar filters--spaced">
+      <input type="search" id="filterText" placeholder="Search institutions..." aria-label="Search institutions"/>
+      <select id="filterCategory" aria-label="Filter by category">
+        <option value="">All Categories</option>
+        <option>Orphanage</option>
+        <option>Rehabilitation</option>
+        <option>Elder Care</option>
+        <option>Education</option>
+        <option>Healthcare</option>
+      </select>
+    </div>
+
+    <div class="cards" id="institutionCards" role="list">
+      <article class="card institution" data-name="St. Joseph Care Home" data-category="Orphanage" data-city="Kochi" role="listitem">
+        <div class="institution__icon">
+          <svg viewBox="0 0 60 60" aria-hidden="true">
+            <circle cx="30" cy="30" r="30" fill="#14b8a6"/>
+            <path d="M15 33l15-15 15 15v12H15V33z" fill="#fff"/>
+          </svg>
         </div>
-
-        <button
-          class="nav-toggle"
-          aria-expanded="false"
-          aria-controls="primary-nav"
-          aria-label="Toggle navigation"
-        >
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-          <span class="nav-toggle__bar"></span>
-        </button>
-
-        <nav
-          id="primary-nav"
-          class="primary-nav"
-          role="navigation"
-          aria-label="Primary"
-        >
-                 <ul class="nav__list">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="institutions.html">Institutions</a></li>
-            <li><a href="aathmiya.html">Aathmiya</a></li>
-            <li><a href="sponsors.html">Sponsors</a></li>
-            <li><a href="volunteer.html">Volunteer</a></li>
-            <li><a href="events.html">Events</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
+        <div class="card__body">
+          <h3 class="card__title">St. Joseph Care Home</h3>
+          <p class="card__desc">Safe home for children with round-the-clock care, education support, and nutrition.</p>
+          <ul class="card__meta">
+            <li><strong>Category:</strong> Orphanage</li>
+            <li><strong>City:</strong> Kochi</li>
+            <li><strong>Phone:</strong> +91 484 000 0001</li>
+            <li><strong>Email:</strong> stjoseph@kmb.org</li>
           </ul>
-          <div class="nav__cta">
-            <a class="btn btn--outline" href="#donate">Donate</a>
-          </div>
-        </nav>
-      </div>
-    </header>
-
-       <!-- INSTITUTION SELECTOR -->
-      <section id="institutions" class="section institutions">
-        <div class="container">
-          <div class="section__head">
-            <h2>Select an Institution</h2>
-            <p class="section__lead">
-              Browse by name, category, or city. Click a card for details and
-              directions.
-            </p>
-          </div>
-
-          <div class="filters">
-            <input
-              type="search"
-              id="filterText"
-              placeholder="Search institutions..."
-              aria-label="Search institutions"
-            />
-            <select id="filterCategory" aria-label="Filter by category">
-              <option value="">All Categories</option>
-              <option>Orphanage</option>
-              <option>Rehabilitation</option>
-              <option>Elder Care</option>
-              <option>Education</option>
-              <option>Healthcare</option>
-            </select>
-          </div>
-
-          <div class="cards" id="institutionCards" role="list">
-            <!-- Demo institution 1 -->
-            <article
-              class="card"
-              role="listitem"
-              data-name="St. Joseph Care Home"
-              data-category="Orphanage"
-              data-city="Kochi"
-            >
-              <figure
-                class="media-placeholder card__media"
-                role="img"
-                aria-label="Logo placeholder for St. Joseph Care Home"
-                data-alt="St. Joseph Care Home logo"
-              ></figure>
-              <div class="card__body">
-                <h3 class="card__title">St. Joseph Care Home</h3>
-                <p class="card__desc">
-                  Safe home for children with round-the-clock care, education
-                  support, and nutrition.
-                </p>
-                <ul class="card__meta">
-                  <li><strong>Category:</strong> Orphanage</li>
-                  <li><strong>City:</strong> Kochi</li>
-                  <li><strong>Phone:</strong> +91 484 000 0001</li>
-                  <li><strong>Email:</strong> stjoseph@kmb.org</li>
-                </ul>
-                <div class="card__actions">
-                  <a class="btn btn--primary" href="#institution-stjoseph"
-                    >View</a
-                  >
-                  <a
-                    class="btn btn--ghost"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://maps.google.com/?q=Kochi%20St.%20Joseph%20Care%20Home"
-                    >Get Directions</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Demo institution 2 -->
-            <article
-              class="card"
-              role="listitem"
-              data-name="Nazareth Rehabilitation Center"
-              data-category="Rehabilitation"
-              data-city="Thrissur"
-            >
-              <figure
-                class="media-placeholder card__media"
-                role="img"
-                aria-label="Logo placeholder for Nazareth Rehabilitation Center"
-                data-alt="Nazareth Rehabilitation Center logo"
-              ></figure>
-              <div class="card__body">
-                <h3 class="card__title">Nazareth Rehabilitation Center</h3>
-                <p class="card__desc">
-                  Recovery-focused care with therapy, counseling, and
-                  reintegration pathways.
-                </p>
-                <ul class="card__meta">
-                  <li><strong>Category:</strong> Rehabilitation</li>
-                  <li><strong>City:</strong> Thrissur</li>
-                  <li><strong>Phone:</strong> +91 487 000 0022</li>
-                  <li><strong>Email:</strong> nazareth@kmb.org</li>
-                </ul>
-                <div class="card__actions">
-                  <a class="btn btn--primary" href="#institution-nazareth"
-                    >View</a
-                  >
-                  <a
-                    class="btn btn--ghost"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://maps.google.com/?q=Thrissur%20Nazareth%20Rehabilitation%20Center"
-                    >Get Directions</a
-                  >
-                </div>
-              </div>
-            </article>
-
-            <!-- Demo institution 3 -->
-            <article
-              class="card"
-              role="listitem"
-              data-name="Blessed Home for Elders"
-              data-category="Elder Care"
-              data-city="Kottayam"
-            >
-              <figure
-                class="media-placeholder card__media"
-                role="img"
-                aria-label="Logo placeholder for Blessed Home for Elders"
-                data-alt="Blessed Home for Elders logo"
-              ></figure>
-              <div class="card__body">
-                <h3 class="card__title">Blessed Home for Elders</h3>
-                <p class="card__desc">
-                  Dignified living for elders with medical care, companionship,
-                  and activities.
-                </p>
-                <ul class="card__meta">
-                  <li><strong>Category:</strong> Elder Care</li>
-                  <li><strong>City:</strong> Kottayam</li>
-                  <li><strong>Phone:</strong> +91 481 000 0033</li>
-                  <li><strong>Email:</strong> blessedhome@kmb.org</li>
-                </ul>
-                <div class="card__actions">
-                  <a class="btn btn--primary" href="#institution-blessed"
-                    >View</a
-                  >
-                  <a
-                    class="btn btn--ghost"
-                    target="_blank"
-                    rel="noopener"
-                    href="https://maps.google.com/?q=Kottayam%20Blessed%20Home%20for%20Elders"
-                    >Get Directions</a
-                  >
-                </div>
-              </div>
-            </article>
+          <div class="card__actions">
+            <a class="btn btn--primary" href="#stjoseph">View</a>
+            <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://maps.google.com/?q=Kochi%20St.%20Joseph%20Care%20Home">Directions</a>
           </div>
         </div>
-      </section>
+      </article>
 
-      <!-- FOOTER -->
-      <footer class="site-footer">
-        <div class="container footer__grid">
-          <div class="footer__brand">
-            <a class="brand__link" href="#" aria-label="KMB home">KMB</a>
-            <p class="footer__about">
-              A missionary home for compassionate care, dignity, and hope.
-            </p>
-          </div>
-          <nav class="footer__nav" aria-label="Footer links">
-            <h3 class="footer__title">Useful Links</h3>
-            <ul>
-              <li><a href="#about">About</a></li>
-              <li><a href="#institutions">Institutions</a></li>
-              <li><a href="#software">Aathmiya</a></li>
-              <li><a href="#sponsors">Sponsors</a></li>
-              <li><a href="#volunteer">Volunteer</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </nav>
-          <div class="footer__contact">
-            <h3 class="footer__title">Contact</h3>
-            <ul>
-              <li>Missionary Road, Kottayam</li>
-              <li>+91 481 000 0000</li>
-              <li>hello@kmb.org</li>
-            </ul>
-          </div>
-          <div class="footer__newsletter">
-            <h3 class="footer__title">Stay in touch</h3>
-            <form class="footer__form" aria-label="Footer newsletter signup">
-              <label class="visually-hidden" for="footerEmail"
-                >Email address</label
-              >
-              <input
-                id="footerEmail"
-                type="email"
-                placeholder="Enter your email"
-                required
-              />
-              <button type="submit" class="btn btn--accent">Subscribe</button>
-            </form>
+      <article class="card institution" data-name="Nazareth Rehabilitation Center" data-category="Rehabilitation" data-city="Thrissur" role="listitem">
+        <div class="institution__icon">
+          <svg viewBox="0 0 60 60" aria-hidden="true">
+            <circle cx="30" cy="30" r="30" fill="#0ea5e9"/>
+            <path d="M18 42c2-10 8-15 12-15s10 5 12 15H18z" fill="#fff"/>
+            <circle cx="30" cy="22" r="6" fill="#fff"/>
+          </svg>
+        </div>
+        <div class="card__body">
+          <h3 class="card__title">Nazareth Rehabilitation Center</h3>
+          <p class="card__desc">Recovery-focused care with therapy, counseling and reintegration pathways.</p>
+          <ul class="card__meta">
+            <li><strong>Category:</strong> Rehabilitation</li>
+            <li><strong>City:</strong> Thrissur</li>
+            <li><strong>Phone:</strong> +91 487 000 0022</li>
+            <li><strong>Email:</strong> nazareth@kmb.org</li>
+          </ul>
+          <div class="card__actions">
+            <a class="btn btn--primary" href="#nazareth">View</a>
+            <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://maps.google.com/?q=Thrissur%20Nazareth%20Rehabilitation%20Center">Directions</a>
           </div>
         </div>
-        <div class="container footer__bottom">
-          <p>
-            &copy; <span id="year"></span> Kunjachan Missionary Bhavan. All
-            rights reserved.
-          </p>
+      </article>
+
+      <article class="card institution" data-name="Blessed Home for Elders" data-category="Elder Care" data-city="Kottayam" role="listitem">
+        <div class="institution__icon">
+          <svg viewBox="0 0 60 60" aria-hidden="true">
+            <circle cx="30" cy="30" r="30" fill="#f59e0b"/>
+            <path d="M20 38h20v6H20zM18 32c3-8 21-8 24 0v4H18v-4z" fill="#fff"/>
+            <circle cx="30" cy="22" r="6" fill="#fff"/>
+          </svg>
         </div>
-      </footer>
-    <script src="../assets/js/main.js"></script>
+        <div class="card__body">
+          <h3 class="card__title">Blessed Home for Elders</h3>
+          <p class="card__desc">Dignified living for elders with medical care, companionship and activities.</p>
+          <ul class="card__meta">
+            <li><strong>Category:</strong> Elder Care</li>
+            <li><strong>City:</strong> Kottayam</li>
+            <li><strong>Phone:</strong> +91 481 000 0033</li>
+            <li><strong>Email:</strong> blessedhome@kmb.org</li>
+          </ul>
+          <div class="card__actions">
+            <a class="btn btn--primary" href="#blessed">View</a>
+            <a class="btn btn--ghost" target="_blank" rel="noopener" href="https://maps.google.com/?q=Kottayam%20Blessed%20Home%20for%20Elders">Directions</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <a class="brand__link" href="../index.html">
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo brand__logo--footer"/>
+        <span class="visually-hidden">KMB</span>
+      </a>
+      <p class="footer__about">A missionary home for compassionate care, dignity, and hope.</p>
+    </div>
+    <nav class="footer__nav" aria-label="Footer">
+      <h3 class="footer__title">Links</h3>
+      <ul>
+        <li><a href="../index.html#about">About</a></li>
+        <li><a href="sponsors.html">Sponsors</a></li>
+        <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="donate.html">Donate</a></li>
+      </ul>
+    </nav>
+    <div class="footer__contact">
+      <h3 class="footer__title">Contact</h3>
+      <ul>
+        <li>Missionary Road, Kottayam</li>
+        <li>+91 481 000 0000</li>
+        <li>hello@kmb.org</li>
+      </ul>
+    </div>
+    <div class="footer__newsletter">
+      <h3 class="footer__title">Stay in touch</h3>
+      <form class="footer__form">
+        <label class="visually-hidden" for="footerEmail">Email</label>
+        <input id="footerEmail" type="email" placeholder="Enter your email" required/>
+        <button class="btn btn--accent">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p>&copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights reserved.</p>
+  </div>
+</footer>
+<script src="../assets/js/main.js"></script>
 </body>
 </html>
