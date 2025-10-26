@@ -4,10 +4,20 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>KMB Institutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <meta name="description" content="Browse KMB institutions by name, category, and city. View details and directions."/>
+  <meta property="og:title" content="KMB Institutions"/>
+  <meta property="og:description" content="Browse institutions by name, category, and city. Click a card for details and directions."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="../assets/logo/kunjachanMissionaryLogo.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" href="../assets/logo/kunjachanMissionaryLogo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../assets/css/style.css"/>
 </head>
 <body>
+<a class="skip-link" href="#institutions">Skip to content</a>
 <header class="site-header">
   <div class="container header__bar">
     <div class="brand">
@@ -19,17 +29,12 @@
     <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
       <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
     </button>
-    <nav id="primary-nav" class="primary-nav">
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
       <ul class="nav__list">
         <li><a href="../index.html">Home</a></li>
-        <li><a class="is-active" href="institutions.html">Institutions</a></li>
-        <li><a href="sponsors.html">Sponsors</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
+        <li><a class="is-active" aria-current="page" href="institutions.html">Institutions</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="donate.html">Donate</a></li>
       </ul>
     </nav>
   </div>
@@ -42,7 +47,7 @@
       <p class="section__lead">Browse by name, category, or city. Click a card for details and directions.</p>
     </div>
 
-    <div class="filters filters--bar filters--spaced">
+    <div class="filters filters--bar filters--spaced" role="search" aria-label="Filter institutions">
       <input type="search" id="filterText" placeholder="Search institutions..." aria-label="Search institutions"/>
       <select id="filterCategory" aria-label="Filter by category">
         <option value="">All Categories</option>
@@ -52,6 +57,7 @@
         <option>Education</option>
         <option>Healthcare</option>
       </select>
+      <input type="search" id="filterCity" placeholder="City / District" aria-label="Filter by city"/>
     </div>
 
     <div class="cards" id="institutionCards" role="list">
@@ -142,10 +148,14 @@
       <h3 class="footer__title">Links</h3>
       <ul>
         <li><a href="timeline.html">Timeline</a></li>
-        <li><a href="../index.html#about">About</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="institutions.html">Institutions</a></li>
         <li><a href="sponsors.html">Sponsors</a></li>
         <li><a href="volunteer.html">Volunteer</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
         <li><a href="donate.html">Donate</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
     <div class="footer__contact">
