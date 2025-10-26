@@ -2,6 +2,11 @@
   const body = document.body;
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("primary-nav");
+  const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const pointerFine = window.matchMedia("(pointer: fine)").matches;
+
+  // Passive option helper
+  const passive = { passive: true };
 
   // Focus-trap helpers for mobile nav
   let lastFocused = null;
@@ -30,63 +35,57 @@
     lastFocused?.focus?.();
   }
 
-  // Toggle button
   if (toggle && nav) {
-    toggle.addEventListener("click", () => {
-      if (nav.classList.contains("open")) {
-        closeNav();
-      } else {
-        openNav();
-      }
-    });
+    toggle.addEventListener("click", () => (nav.classList.contains("open") ? closeNav() : openNav()));
   }
 
-  // Escape closes nav
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && nav?.classList.contains("open")) {
-      closeNav();
-    }
-    // Focus trap
-    if (e.key === "Tab" && nav?.classList.contains("open")) {
-      const focusables = getFocusableWithin(nav);
-      if (!focusables.length) return;
-      const first = focusables[0];
-      const last = focusables[focusables.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault();
-        last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault();
-        first.focus();
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.key === "Escape" && nav?.classList.contains("open")) closeNav();
+      // Focus trap
+      if (e.key === "Tab" && nav?.classList.contains("open")) {
+        const focusables = getFocusableWithin(nav);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
       }
-    }
-  });
+    },
+    passive
+  );
 
-  // Close nav on any nav link click
   nav?.addEventListener("click", (e) => {
     const a = e.target.closest("a");
     if (a) closeNav();
   });
 
-  // Smooth internal links and close nav after click
+  // Smooth internal links
   document.querySelectorAll('a[href^="#"]').forEach((a) => {
     a.addEventListener("click", (e) => {
       const id = a.getAttribute("href");
       if (!id || id === "#" || !document.querySelector(id)) return;
       e.preventDefault();
-      document
-        .querySelector(id)
-        .scrollIntoView({ behavior: "smooth", block: "start" });
-      if (nav?.classList.contains("open")) {
-        closeNav();
-      }
+      document.querySelector(id).scrollIntoView({ behavior: "smooth", block: "start" });
+      if (nav?.classList.contains("open")) closeNav();
     });
   });
 
-  // Animated counters
+  // Animated counters (cheap)
   const animateCount = (el) => {
     const target = parseInt(el.getAttribute("data-count") || "0", 10);
-    const duration = 1200;
+    if (!Number.isFinite(target)) return;
+    const duration = prefersReduced ? 0 : 900;
+    if (duration === 0) {
+      el.textContent = target.toLocaleString();
+      return;
+    }
     const start = performance.now();
     const step = (now) => {
       const p = Math.min((now - start) / duration, 1);
@@ -105,15 +104,15 @@
         }
       });
     },
-    { threshold: 0.4 }
+    { threshold: 0.35 }
   );
   countEls.forEach((el) => io.observe(el));
 
-  // Helper: figure out path to pages from any location
+  // Helper: path to pages
   const inPagesDir = location.pathname.includes("/pages/");
   const pathTo = (file) => (inPagesDir ? file : `pages/${file}`);
 
-  // Institution finder (home)
+  // Finder (home)
   const textInput = document.getElementById("find-keywords");
   const categorySelect = document.getElementById("find-category");
   const locationInput = document.getElementById("find-location");
@@ -123,11 +122,7 @@
     const name = (card.getAttribute("data-name") || "").toLowerCase();
     const category = (card.getAttribute("data-category") || "").toLowerCase();
     const city = (card.getAttribute("data-city") || "").toLowerCase();
-    return (
-      (!q || name.includes(q)) &&
-      (!cat || category === cat) &&
-      (!loc || city.includes(loc))
-    );
+    return ((!q || name.includes(q)) && (!cat || category === cat) && (!loc || city.includes(loc)));
   }
   function applyFind() {
     const q = (textInput?.value || "").trim().toLowerCase();
@@ -139,7 +134,6 @@
         card.style.display = matchesCard(card, q, cat, loc) ? "" : "none";
       });
     } else if (searchBtn) {
-      // If not on Institutions page, redirect with query params
       const params = new URLSearchParams();
       if (q) params.set("q", q);
       if (cat) params.set("cat", cat);
@@ -164,11 +158,10 @@
     }
   });
 
-  // Institutions page secondary filters (+query param prefill)
+  // Institutions filters + query prefill
   const filterText = document.getElementById("filterText");
   const filterCategory = document.getElementById("filterCategory");
   const filterCity = document.getElementById("filterCity");
-
   function applySecondaryFilter() {
     const q = (filterText?.value || "").trim().toLowerCase();
     const cat = (filterCategory?.value || "").trim().toLowerCase();
@@ -178,19 +171,13 @@
       const name = (card.getAttribute("data-name") || "").toLowerCase();
       const category = (card.getAttribute("data-category") || "").toLowerCase();
       const c = (card.getAttribute("data-city") || "").toLowerCase();
-      card.style.display =
-        (!q || name.includes(q)) &&
-        (!cat || category === cat) &&
-        (!city || c.includes(city))
-          ? ""
-          : "none";
+      card.style.display = ((!q || name.includes(q)) && (!cat || category === cat) && (!city || c.includes(city))) ? "" : "none";
     });
   }
-  filterText?.addEventListener("input", applySecondaryFilter);
-  filterCategory?.addEventListener("change", applySecondaryFilter);
-  filterCity?.addEventListener("input", applySecondaryFilter);
+  filterText?.addEventListener("input", applySecondaryFilter, passive);
+  filterCategory?.addEventListener("change", applySecondaryFilter, passive);
+  filterCity?.addEventListener("input", applySecondaryFilter, passive);
 
-  // Prefill from query params on institutions page
   if (inPagesDir && /institutions\.html$/.test(location.pathname)) {
     const params = new URLSearchParams(location.search);
     const q = params.get("q") || "";
@@ -235,13 +222,13 @@
         const matchQ = !q || title.includes(q);
         const matchC = !cat || eCat === cat;
         const matchS = !status || eStatus === status;
-        evt.style.display = matchQ && matchC && matchS ? "" : "none";
+        evt.style.display = (matchQ && matchC && matchS) ? "" : "none";
       });
     });
   }
-  eventSearch?.addEventListener("input", filterEvents);
-  eventCategory?.addEventListener("change", filterEvents);
-  eventStatus?.addEventListener("change", filterEvents);
+  eventSearch?.addEventListener("input", filterEvents, passive);
+  eventCategory?.addEventListener("change", filterEvents, passive);
+  eventStatus?.addEventListener("change", filterEvents, passive);
 
   // Gallery tag filtering
   const galleryTags = document.querySelectorAll("[data-gallery-filter]");
@@ -273,27 +260,24 @@
         status.className = "form-status";
         status.setAttribute("role", "status");
         status.setAttribute("aria-live", "polite");
-        // insert near the end
         f.appendChild(status);
       }
-      status.textContent =
-        "Thanks! This is a demo — connect this form to your backend/service.";
+      status.textContent = "Thanks! This is a demo — connect this form to your backend/service.";
     });
   });
 
-  // ---------- Timeline renderer (editable JSON template) ----------
+  // Timeline renderer (JSON)
   const timelineMount = document.getElementById("timelineMount");
   const timelineDataEl = document.getElementById("timelineData");
   if (timelineMount && timelineDataEl) {
     try {
       const data = JSON.parse(timelineDataEl.textContent || "[]");
       const frag = document.createDocumentFragment();
-
       const rail = document.createElement("div");
       rail.className = "timeline-rail";
       timelineMount.appendChild(rail);
 
-      data.forEach((item, idx) => {
+      data.forEach((item) => {
         const wrap = document.createElement("div");
         wrap.className = "tl-item reveal";
         wrap.setAttribute("data-status", item.status || "planned");
@@ -355,7 +339,6 @@
 
       timelineMount.appendChild(frag);
 
-      // Reveal on scroll
       const tlObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((en) => {
@@ -372,4 +355,64 @@
       console.warn("Invalid timeline JSON", e);
     }
   }
+
+  // Global micro-interactions (performance-friendly)
+  // Ripple (desktop only, no reduced motion)
+  if (pointerFine && !prefersReduced) {
+    document.addEventListener("click", (e) => {
+      const btn = e.target.closest(".btn");
+      if (!btn) return;
+      const rect = btn.getBoundingClientRect();
+      const ripple = document.createElement("span");
+      ripple.className = "btn__ripple";
+      const size = Math.max(rect.width, rect.height);
+      ripple.style.width = ripple.style.height = `${size}px`;
+      ripple.style.left = `${e.clientX - rect.left - size / 2}px`;
+      ripple.style.top = `${e.clientY - rect.top - size / 2}px`;
+      btn.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove());
+    }, passive);
+  }
+
+  // 3D tilt is disabled by default (opt-in with class="tilt")
+  if (pointerFine && !prefersReduced) {
+    const tiltTargets = document.querySelectorAll(".tilt");
+    const maxTilt = 8;
+    tiltTargets.forEach((el) => {
+      let rAF = null;
+      let last = null;
+      const onMove = (e) => {
+        last = e;
+        if (rAF) return;
+        rAF = requestAnimationFrame(() => {
+          rAF = null;
+          const rect = el.getBoundingClientRect();
+          const px = (last.clientX - rect.left) / rect.width;
+          const py = (last.clientY - rect.top) / rect.height;
+          const rx = (py - 0.5) * -2 * maxTilt;
+          const ry = (px - 0.5) * 2 * maxTilt;
+          el.style.transform = `perspective(700px) rotateX(${rx}deg) rotateY(${ry}deg) translateY(-6px)`;
+        });
+      };
+      const onLeave = () => { el.style.transform = ""; };
+      el.addEventListener("mousemove", onMove, passive);
+      el.addEventListener("mouseleave", onLeave, passive);
+    });
+  }
+
+  // Scroll reveal
+  const revealables = document.querySelectorAll(".card, .card-soft, .card-lined, .sponsor-tile, .gallery-panel, .partner, .story, .event, .highlight, .counter, .tier");
+  revealables.forEach((el) => el.classList.add("reveal"));
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.classList.add("is-visible");
+          revealObserver.unobserve(en.target);
+        }
+      });
+    },
+    { threshold: 0.18 }
+  );
+  revealables.forEach((el) => revealObserver.observe(el));
 })();

@@ -13,7 +13,7 @@
   <link rel="icon" href="../assets/logo/kunjachanMissionaryLogo.png"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../assets/css/style.css"/>
 </head>
 <body>
@@ -44,13 +44,11 @@
   <div class="container">
     <div class="section__head">
       <h1 class="section-title">Website Development Timeline</h1>
+      <p class="section__lead">This is a clean, animated timeline you can edit easily. Update month, year, and progress below.</p>
     </div>
 
-    <!-- Renders here -->
     <div class="timeline-wrap" id="timelineMount" aria-live="polite"></div>
 
-    <!-- Edit this JSON only: update date, title, desc, phase, owner, and status -->
-    <!-- status can be "planned", "progress", or "done" -->
     <script id="timelineData" type="application/json">
       [
         { "date": "2025-01", "title": "Initiation & Scope", "desc": "Kick-off, goals, success metrics and scope locked.", "phase": "Planning", "owner": "Core Team", "status": "done" },
@@ -63,7 +61,9 @@
       ]
     </script>
 
-    
+    <div class="small-note mt-section-sm">
+      Tip: To change the timeline, edit the JSON above (no code changes needed). Valid statuses: planned, progress, done.
+    </div>
   </div>
 </section>
 
