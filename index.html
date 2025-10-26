@@ -1,234 +1,798 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Kunjachan Missionary Bhavan (KMB) — Compassion in Action</title>
-  <meta name="description" content="Kunjachan Missionary Bhavan — home for care, dignity and hope. Explore institutions, impact, sponsors, volunteering, events, gallery, and ways to support."/>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="assets/css/style.css"/>
-</head>
-<body>
-<a class="skip-link" href="#main">Skip to content</a>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Kunjachan Missionary Bhavan Health Center — Compassion & Care</title>
+    <meta name="description" content="Kunjachan Missionary Bhavan Health Center: Providing essential medical aid, rehabilitation, and compassionate care to the abandoned and marginalized in rural Kerala. Driven by non-profit missionary dedication."/>
+    
+    <!-- Fonts: Poppins (display) and Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+    
+    <!-- External Dependencies: Tailwind, Lucide Icons (Professional Icons) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
 
+    <!-- Tailwind Configuration (Consistent theming & Creative Animations) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0ea5e9',
+                        'primary-teal': '#14b8a6',
+                        'accent-orange': '#f97316',
+                        'navy-dark': '#0f3d52',
+                        'soft-bg': '#f5f9fb',
+                        // Define glass colors using Tailwind's system for utilities
+                        'glass-light': 'rgba(255, 255, 255, 0.95)',
+                        'glass-border': 'rgba(255, 255, 255, 0.4)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    keyframes: {
+                        // Creative new animation for background/motto section
+                        shift_bg: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        },
+                        pulse_slow: {
+                            '0%, 100%': { opacity: '0.9', transform: 'scale(1)' },
+                            '50%': { opacity: '0.7', transform: 'scale(1.05)' },
+                        },
+                        float_y: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-5px)' },
+                        },
+                        // New keyframe for staggered timeline reveal
+                        fade_slide_in: {
+                            '0%': { opacity: '0', transform: 'translateX(-20px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        }
+                    },
+                    animation: {
+                        shift_bg: 'shift_bg 20s ease infinite',
+                        pulse_slow: 'pulse_slow 4s ease-in-out infinite',
+                        float_y: 'float_y 3s ease-in-out infinite',
+                        // New animation utility
+                        'fade-slide-in': 'fade_slide_in 0.8s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom style block: Combined base styles, overrides, and unique elements -->
+    <style>
+        /* --- 1. Custom Properties (Design Token System) --- */
+        :root {
+            /* Colors (Serene & Professional Palette) */
+            --color-primary-blue: #0ea5e9; /* Sky Blue 500 - Trust, Navigation */
+            --color-primary-teal: #14b8a6; /* Teal 500 - Growth, Highlights */
+            --color-accent-orange: #f97316; /* Orange 500 - Hope, Donate CTA */
+            --color-navy-dark: #0f3d52; /* Primary Text/Dark BG */
+            --color-soft-bg: #f5f9fb; /* Light background for sections */
+            --color-white: #ffffff;
+            --color-text-soft: #4b5563; /* Gray 700 equivalent */
+        
+            /* Glassmorphism Variables */
+            --color-glass-bg: rgba(255, 255, 255, 0.15); /* Slightly transparent white */
+            --color-glass-border: rgba(255, 255, 255, 0.4); /* Subtle white border */
+        
+            /* Typography */
+            --font-display: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        /* --- 2. Base & Reset Styles --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            color: var(--color-navy-dark);
+            line-height: 1.6;
+            background-color: var(--color-soft-bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 5rem; /* Base padding for fixed header */
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Visually Hidden Utility */
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* --- 3. Layout & Structure --- */
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            max-width: 1280px;
+        }
+        
+        main {
+            flex-grow: 1;
+        }
+        
+        .section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        @media (min-width: 1024px) {
+            .section {
+                padding-top: 7rem;
+                padding-bottom: 7rem;
+            }
+        }
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--color-navy-dark);
+        }
+        
+        /* --- 4. Navigation (Header) --- */
+        .site-header {
+            position: fixed; /* Ensures the Nav Bar is locked to the top */
+            width: 100%;
+            top: 0;
+            left: 0;
+            /* Use Glassmorphism on the header for extra elegance */
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.9); /* Near white background */
+            box-shadow: 0 2px 10px (15, 61, 82, 0.08);
+            z-index: 50;
+        }
+        
+        .brand__logo {
+            height: 2.5rem; /* Consistent logo size */
+            transition: transform 0.3s ease;
+        }
+        .brand__link:hover .brand__logo {
+            transform: rotate(-3deg) scale(1.05);
+        }
+        
+        /* Desktop Nav */
+        .primary-nav {
+            display: none; /* Hidden by default for mobile */
+        }
+        .nav__list {
+            display: flex;
+            list-style: none;
+            gap: 1.75rem;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .nav__list a:not(.btn):hover {
+            color: var(--color-primary-blue);
+            transform: translateY(-2px);
+        }
+        .nav__list .is-active {
+            color: var(--color-primary-teal);
+        }
+
+        /* Mobile Nav Toggle (Hamburger) */
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 2rem;
+            height: 2rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 100;
+        }
+        .nav-toggle__bar {
+            width: 2rem;
+            height: 3px;
+            background: var(--color-navy-dark);
+            border-radius: 10px;
+            transition: all 0.3s linear;
+            transform-origin: 1px;
+        }
+
+        /* Mobile Navigation Open State */
+        @media (max-width: 1023px) {
+            .primary-nav {
+                position: absolute;
+                top: 4.5rem; /* Below the header */
+                left: 0;
+                width: 100%;
+                padding: 1rem 0;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                transition: all 0.3s ease-in-out;
+                transform: translateY(0);
+                opacity: 0;
+                pointer-events: none;
+                background-color: rgba(255, 255, 255, 0.98);
+            }
+            .primary-nav.open {
+                display: block;
+                opacity: 1;
+                pointer-events: auto;
+            }
+            .primary-nav .nav__list {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .primary-nav .nav-link {
+                padding: 0.75rem 0;
+                display: block;
+                text-align: center;
+                width: 100%;
+            }
+            .lg\:hidden { display: flex; }
+        }
+        @media (min-width: 1024px) {
+            .primary-nav {
+                display: block !important;
+            }
+            .nav-toggle {
+                display: none;
+            }
+        }
+        
+        /* --- 5. Footer --- */
+        .site-footer {
+            background-color: var(--color-navy-dark);
+            color: var(--color-white);
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+        .footer__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+        .footer__title {
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--color-primary-teal);
+        }
+        .footer__nav ul, .footer__contact ul {
+            list-style: none;
+            font-size: 0.9rem;
+            color: #9ca3af;
+            line-height: 2;
+        }
+
+        /* --- 6. Buttons and Utility Components --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            border-radius: 999px; /* Pill shape */
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn--primary {
+            background-color: var(--color-primary-teal);
+            color: var(--color-white);
+            border: 2px solid var(--color-primary-teal);
+        }
+        .btn--primary:hover {
+            background-color: #10a395; /* Slightly darker teal */
+            border-color: #10a395;
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 8px 15px rgba(20, 184, 166, 0.4);
+        }
+        .btn--ghost {
+            background-color: transparent;
+            color: var(--color-navy-dark);
+            border: 2px solid var(--color-navy-dark);
+            box-shadow: none;
+        }
+        .btn--ghost:hover {
+            background-color: #e5f1f0;
+            color: var(--color-navy-dark);
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 8px 15px rgba(20, 184, 166, 0.2);
+        }
+        
+        /* --- 7. Glassmorphism & Modern Effects --- */
+        .glass-card {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: var(--glass-light);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+        .finder input, .finder select {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.7);
+            transition: all 0.3s ease;
+        }
+        .finder input:focus, .finder select:focus {
+            background-color: white;
+            box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.5);
+            outline: none;
+        }
+
+        /* Gradient Text Utility */
+        .gradient-text {
+            background: linear-gradient(45deg, #0ea5e9, #14b8a6, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* Scroll Reveal Effect (Applied via JS) */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Unique Custom Styles */
+        .hero__main-title {
+            font-size: 8rem; /* Massive size */
+            line-height: 0.8;
+            letter-spacing: -0.05em;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        @media (max-width: 1024px) {
+            .hero__main-title { font-size: 5rem; }
+        }
+        @media (max-width: 640px) {
+            .hero__main-title { font-size: 3.5rem; }
+        }
+
+        .motto-section {
+            background: linear-gradient(-45deg, #e3eef4, #f5f9fb, #e3eef4);
+            background-size: 400% 400%;
+            animation: shift_bg 20s ease infinite;
+        }
+        .fsc-container { padding-top: 0; padding-bottom: 5rem; }
+        .fsc-card { transform: translateY(-50px) !important; margin-bottom: -50px; }
+        .timeline-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            color: #fff;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.8), rgba(14, 165, 233, 0.8));
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .timeline-btn:hover {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.9), rgba(14, 165, 233, 0.9));
+        }
+        /* Removed unused timeline styles */
+        .timeline, .timeline::before, .timeline-item, .timeline-item::before, .timeline-item.in-view {
+             /* Placeholder to overwrite unused styles if present */
+             all: unset;
+        }
+    </style>
+</head>
+<body class="font-body">
+
+<!-- --- 1. Consistent Navigation Bar (Header) - FIXED & Glassmorphism Applied --- -->
 <header class="site-header" role="banner">
-  <div class="container header__bar">
-    <div class="brand">
-      <a href="index.html" class="brand__link">
-        <img src="assets/logo/kunjachanMissionaryLogo.png" alt="Kunjachan Missionary Bhavan Logo" class="brand__logo" loading="lazy"/>
-        <span class="visually-hidden">Kunjachan Missionary Bhavan</span>
-      </a>
+    <div class="container flex items-center justify-between py-4">
+        <div class="brand flex items-center">
+            <a href="index.html" class="brand__link flex items-center gap-2 transform hover:scale-[1.02] transition duration-300">
+                <!-- Using the file path from your requirements -->
+                <img src="assets/logo/kunjachanMissionaryLogo.png" onerror="this.src='https://placehold.co/40x40/14b8a6/ffffff?text=HC'" alt="Kunjachan Missionary Bhavan Health Center Logo" class="brand__logo h-10 w-10 shadow-md rounded-full" loading="lazy"/>
+                <span class="font-display text-2xl font-bold text-navy-dark">KMB Health</span>
+            </a>
+        </div>
+        
+        <button class="nav-toggle lg:hidden" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+        </button>
+        
+        <nav id="primary-nav" class="primary-nav lg:block" aria-label="Primary navigation">
+            <ul class="nav__list font-body text-navy-dark lg:flex lg:gap-8">
+             <li><a href="index.html">Home</a></li>
+             <li><a href="pages/institutions.html">Institutions</a></li>
+             <li><a href="pages/sponsors.html">Sponsors</a></li>
+             <li><a class="is-active" href="pages/volunteer.html">Volunteer</a></li>
+             <li><a href="pages/events.html">Events</a></li>
+             <li><a href="pages/gallery.html">Gallery</a></li>
+             <li><a href="pages/about.html">About</a></li>
+             <li><a href="pages/contact.html">Contact</a></li>
+
+                <!-- RE-ADDED MILESTONES LINK -->
+                <li><a class="nav-link" href="pages/timeline.html">Milestones</a></li>
+                <li class="donate-link ml-4"><a href="pages/donate.html" class="btn btn--primary py-2 px-4 rounded-full">Donate Now</a></li>
+            </ul>
+        </nav>
     </div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
-      <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
-    </button>
-    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
-      <ul class="nav__list">
-        <li><a class="is-active" href="index.html">Home</a></li>
-        <li><a href="pages/institutions.html">Institutions</a></li>
-        <li><a href="pages/sponsors.html">Sponsors</a></li>
-        <li><a href="pages/volunteer.html">Volunteer</a></li>
-        <li><a href="pages/events.html">Events</a></li>
-        <li><a href="pages/gallery.html">Gallery</a></li>
-        <li><a href="pages/about.html">About</a></li>
-        <li><a href="pages/contact.html">Contact</a></li>
-        <li><a href="pages/donate.html">Donate</a></li>
-      </ul>
-    </nav>
-  </div>
 </header>
 
 <main id="main">
-  <!-- HERO -->
-  <section id="home" class="hero section section--xl">
-    <div class="container hero__grid">
-      <div class="hero__content prose">
-        <p class="eyebrow">Kunjachan Missionary Bhavan</p>
-        <h1 class="hero__title gradient-text">Compassion in Action</h1>
-        <p class="lead">Shelter, nutrition, therapy, education and restored hope—serving the abandoned, elderly and marginalized with dignity.</p>
-        <div class="hero__actions">
-          <a href="#about" class="btn btn--primary">Learn More</a>
-          <a href="pages/institutions.html" class="btn btn--ghost">Explore Institutions</a>
+    <!-- HERO SECTION: Clean, Centered, and Focuses on the core message -->
+    <section id="home" class="section bg-soft-bg relative overflow-hidden pt-20 lg:pt-32 pb-16 lg:pb-16">
+        <!-- Subtle background shapes for elegance -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+            <div class="absolute top-[10%] left-[5%] w-64 h-64 bg-primary-teal/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
+            <div class="absolute bottom-[20%] right-[10%] w-96 h-96 bg-primary-blue/10 rounded-full mix-blend-multiply filter blur-3xl"></div>
         </div>
 
-        <div class="stats">
-          <div class="stat card-soft">
-            <div class="stat__num" data-count="12">0</div>
-            <div class="stat__label">Institutions</div>
-          </div>
-          <div class="stat card-soft">
-            <div class="stat__num" data-count="18">0</div>
-            <div class="stat__label">Years of Service</div>
-          </div>
-          <div class="stat card-soft">
-            <div class="stat__num" data-count="100">0</div>
-            <div class="stat__label">Meals / Day</div>
-          </div>
-            <div class="stat card-soft">
-              <div class="stat__num" data-count="320">0</div>
-              <div class="stat__label">People in Care</div>
+        <div class="container relative grid lg:grid-cols-1 gap-20 items-center text-center">
+            
+            <!-- CENTRAL HERO CONTENT & STATS -->
+            <div class="hero__content max-w-5xl mx-auto">
+                <!-- Large Logo Typography -->
+                <p class="font-semibold text-primary-teal mb-2 uppercase tracking-widest reveal-item">Kunjachan Missionary Bhavan</p>
+                <h1 class="hero__main-title font-display gradient-text reveal-item" style="transition-delay: 0.1s;">KMB HC</h1>
+                
+                <h2 class="text-4xl md:text-5xl lg:text-6xl mb-8 gradient-text reveal-item" style="transition-delay: 0.2s; font-weight: 800;">Compassion in Action</h2>
+                <p class="text-xl text-gray-700 leading-relaxed mb-12 reveal-item" style="transition-delay: 0.3s;">**Essential missionary-led care and rehabilitation**—serving the abandoned, elderly, and mentally ill across our rural Kerala communities. We are non-profit and rely on sponsorship.</p>
+                
+                <div class="flex flex-wrap gap-6 justify-center mb-16 reveal-item" style="transition-delay: 0.4s;">
+                    <a href="#health-focus" class="btn btn--primary">See Our Services</a>
+                    <a href="pages/donate.html" class="btn btn--ghost">Fund Our Mission</a>
+                </div>
+
+                <!-- STATS: Clean Glass Cards -->
+                <div class="stats grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+                    <div class="stat glass-card text-center p-5 reveal-item hover:animate-float_y" data-count="1200" data-label="Medical Consults">
+                        <div class="text-3xl font-display font-bold text-primary-teal mb-1">0</div>
+                        <div class="text-xs text-gray-600 font-medium">Medical Consults / Yr</div>
+                    </div>
+                    <div class="stat glass-card text-center p-5 reveal-item hover:animate-float_y" data-count="320" data-label="People in Care" style="transition-delay: 0.1s;">
+                        <div class="text-3xl font-display font-bold text-primary-blue mb-1">0</div>
+                        <div class="text-xs text-gray-600 font-medium">People in Full-Time Care</div>
+                    </div>
+                    <div class="stat glass-card text-center p-5 reveal-item hover:animate-float_y" data-count="8" data-label="Missionary Teams" style="transition-delay: 0.2s;">
+                        <div class="text-3xl font-display font-bold text-primary-teal mb-1">0</div>
+                        <div class="text-xs text-gray-600 font-medium">Rural Mission Teams</div>
+                    </div>
+                    <div class="stat glass-card text-center p-5 reveal-item hover:animate-float_y" data-count="18" data-label="Years of Service" style="transition-delay: 0.3s;">
+                        <div class="text-3xl font-display font-bold text-primary-blue mb-1">0</div>
+                        <div class="text-xs text-gray-600 font-medium">Years of Service</div>
+                    </div>
+                </div>
             </div>
         </div>
-      </div>
+    </section>
 
-      <div class="illustration hero__illustration" aria-hidden="true">
-        <svg class="illustration__svg" viewBox="0 0 640 520">
-          <title>KMB Compassion Illustration</title>
-          <defs>
-            <linearGradient id="gradHeart" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stop-color="#14b8a6"/>
-              <stop offset="100%" stop-color="#0d9488"/>
-            </linearGradient>
-            <linearGradient id="gradBg" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stop-color="#f0f7fa"/>
-              <stop offset="100%" stop-color="#e3eef4"/>
-            </linearGradient>
-          </defs>
-          <rect width="640" height="520" rx="40" fill="url(#gradBg)"/>
-          <circle cx="110" cy="140" r="60" fill="#14b8a620"/>
-          <circle cx="540" cy="130" r="70" fill="#0ea5e95a"/>
-          <circle cx="560" cy="350" r="90" fill="#0d948820"/>
-          <path d="M320 420c-95-62-150-123-150-190 0-42 30-78 74-78 34 0 58 22 76 48 18-26 42-48 76-48 44 0 74 36 74 78 0 67-55 128-150 190z" fill="url(#gradHeart)"/>
-          <g fill="#fff">
-            <circle cx="280" cy="250" r="28"/>
-            <circle cx="360" cy="250" r="28"/>
-          </g>
-          <g stroke="#0f3d52" stroke-width="6" stroke-linecap="round">
-            <path d="M270 302c25 16 75 16 100 0"/>
-          </g>
-          <g class="floating">
-            <circle cx="205" cy="360" r="22" fill="#1fa97a"/>
-            <circle cx="430" cy="355" r="22" fill="#1fa97a"/>
-            <circle cx="320" cy="160" r="16" fill="#f59e0b"/>
-            <circle cx="250" cy="110" r="10" fill="#1fa97a"/>
-            <circle cx="395" cy="95" r="14" fill="#f59e0b"/>
-          </g>
-        </svg>
-      </div>
-    </div>
+    <!-- --- NEW SECTION: HEALTH CENTER FOCUS (High-Class Element) --- -->
+    <section id="health-focus" class="section bg-white pt-24 pb-24 lg:pt-32 lg:pb-32">
+        <div class="container">
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <h2 class="section-title text-4xl font-bold text-navy-dark reveal-item">Our Core Health Initiatives</h2>
+                <p class="text-lg text-gray-700 reveal-item" style="transition-delay: 0.1s;">We focus on holistic recovery in an environment built on dignity and respect, specializing in areas often overlooked in rural care.</p>
+            </div>
 
-    <!-- Finder -->
-    <form class="finder container" role="search" aria-label="Find an institution">
-      <label class="visually-hidden" for="find-keywords">Search keywords</label>
-      <input id="find-keywords" name="q" type="search" placeholder="Enter keywords" autocomplete="off"/>
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Card 1: Emergency & Chronic Care -->
+                <div class="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition duration-500 reveal-item" style="transition-delay: 0.2s;">
+                    <img src="https://placehold.co/600x400/0ea5e9/ffffff?text=Rural+Medical+Checkup" alt="Image of a rural medical outreach program in Kerala" class="w-full h-56 object-cover transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.src='https://placehold.co/600x400/0ea5e9/ffffff?text=Rural+Medical+Checkup'"/>
+                    <div class="p-6 bg-white">
+                        <div class="inline-flex items-center justify-center p-3 rounded-full bg-primary-teal/20 text-primary-teal mb-4 transform group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="stethoscope" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-navy-dark mb-2">Primary & Chronic Care</h3>
+                        <p class="text-sm text-gray-600">Free medical check-ups and managed care for chronic illnesses (diabetes, BP) for all residents and local villagers.</p>
+                    </div>
+                </div>
 
-      <label class="visually-hidden" for="find-category">Category</label>
-      <select id="find-category" name="category">
-        <option value="">All Categories</option>
-        <option>Orphanage</option>
-        <option>Rehabilitation</option>
-        <option>Elder Care</option>
-        <option>Education</option>
-        <option>Healthcare</option>
-      </select>
+                <!-- Card 2: Mental Health & Rehabilitation -->
+                <div class="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition duration-500 reveal-item" style="transition-delay: 0.3s;">
+                    <img src="https://placehold.co/600x400/14b8a6/ffffff?text=Compassionate+Therapy" alt="Image of a compassionate therapy session in a quiet rural setting" class="w-full h-56 object-cover transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.src='https://placehold.co/600x400/14b8a6/ffffff?text=Compassionate+Therapy'"/>
+                    <div class="p-6 bg-white">
+                        <div class="inline-flex items-center justify-center p-3 rounded-full bg-primary-blue/20 text-primary-blue mb-4 transform group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="brain-cog" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-navy-dark mb-2">Mental Health Rehabilitation</h3>
+                        <p class="text-sm text-gray-600">Specialized long-term support and non-pharmacological therapy for the mentally ill abandoned in our care.</p>
+                    </div>
+                </div>
 
-      <label class="visually-hidden" for="find-location">City</label>
-      <input id="find-location" name="location" type="text" placeholder="City / District" autocomplete="off"/>
-
-      <button type="button" class="btn btn--accent finder__submit" id="finderSearchBtn">Search Now</button>
-    </form>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="section bg-soft">
-    <div class="container about__grid">
-      <div class="about__info prose">
-        <h2 class="section-title">Who We Are</h2>
-        <p class="lead-sm">Kunjachan Missionary Bhavan (KMB) is a missionary-led home offering shelter, nutrition, therapy, learning support and companionship for the poor, abandoned and elderly.</p>
-        <div class="about__split">
-          <div>
-            <h3 class="h5">Our Mission</h3>
-            <p>To serve with love and integrity—ensuring each person is safe, respected and supported to live with dignity.</p>
-          </div>
-            <div>
-              <h3 class="h5">Our Vision</h3>
-              <p>Communities transformed by compassion where no one is left behind and hope is renewed daily.</p>
+                <!-- Card 3: Nutrition & Wellness -->
+                <div class="group relative overflow-hidden rounded-xl shadow-xl hover:shadow-2xl transition duration-500 reveal-item" style="transition-delay: 0.4s;">
+                    <img src="https://placehold.co/600x400/f97316/ffffff?text=Sustainable+Rural+Nutrition" alt="Image of a healthy communal meal focusing on local produce" class="w-full h-56 object-cover transition duration-500 group-hover:scale-105" loading="lazy" onerror="this.src='https://placehold.co/600x400/f97316/ffffff?text=Sustainable+Rural+Nutrition'"/>
+                    <div class="p-6 bg-white">
+                        <div class="inline-flex items-center justify-center p-3 rounded-full bg-accent-orange/20 text-accent-orange mb-4 transform group-hover:rotate-6 transition duration-300">
+                            <i data-lucide="chef-hat" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="font-display text-xl font-bold text-navy-dark mb-2">Geriatric & Nutritional Aid</h3>
+                        <p class="text-sm text-gray-600">Focusing on the dietary needs of the elderly and frail, ensuring sustainable and locally-sourced nutrition daily.</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="about__actions">
-          <a href="pages/about.html#impact-stories" class="btn btn--ghost">Impact Stories</a>
-          <a href="pages/contact.html" class="btn btn--outline">Contact Us</a>
+    </section>
+    
+    <!-- --- NEW SECTION: RURAL NETWORK & OUTREACH (Map Focus) --- -->
+    <section id="network" class="section bg-soft-bg pt-24 pb-24 lg:pt-32 lg:pb-32">
+        <div class="container network__grid grid lg:grid-cols-2 gap-16 items-center">
+            <!-- Text Content -->
+            <div class="network__info order-2 lg:order-1">
+                <h2 class="section-title text-4xl font-bold reveal-item">Our Rural Network: Reaching the Unreached</h2>
+                <p class="text-lg text-gray-700 mb-8 reveal-item" style="transition-delay: 0.1s;">Our mission operates through a chain of **small, decentralized, non-profit setups** across remote villages in Kerala. This approach ensures deeply localized care but requires centralized management and transparent funding.</p>
+                
+                <div class="space-y-4 mb-10 reveal-item" style="transition-delay: 0.2s;">
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="map-pin" class="w-6 h-6 text-primary-teal flex-shrink-0 mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-navy-dark">Deep Local Presence (8 Centers)</h4>
+                            <p class="text-sm text-gray-600">Operating where infrastructure is minimal, ensuring no one is forgotten in their local area.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="shield" class="w-6 h-6 text-primary-blue flex-shrink-0 mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-navy-dark">Unifying Unorganized Setups</h4>
+                            <p class="text-sm text-gray-600">Standardizing care, training, and accountability across all centers for maximum efficiency.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i data-lucide="hands-clapping" class="w-6 h-6 text-accent-orange flex-shrink-0 mt-1"></i>
+                        <div>
+                            <h4 class="font-semibold text-navy-dark">Volunteer & Missionary Driven</h4>
+                            <p class="text-sm text-gray-600">Care provided by dedicated, full-time missionary teams and local volunteers, fulfilling our Christian mandate.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="pages/institutions.html" class="btn btn--primary reveal-item" style="transition-delay: 0.3s;">View All Institutions</a>
+            </div>
+            
+            <!-- Map/Visual Element -->
+            <div class="network__map order-1 lg:order-2 illustration reveal-item" style="transition-delay: 0.3s;">
+                 <div class="glass-card p-8 bg-soft-bg/80 min-h-[450px] flex flex-col items-center justify-center">
+                     <i data-lucide="globe" class="w-24 h-24 text-primary-blue/70 mb-4 animate-pulse_slow"></i>
+                     <h3 class="text-center font-display text-2xl font-semibold mt-4 text-navy-dark">Kerala Outreach Map</h3>
+                     <p class="text-center text-gray-600 text-sm">Visualizing the network of small centers across the region.</p>
+                     <img src="https://placehold.co/400x200/0ea5e9/ffffff?text=Map+Placeholder" alt="Map showing rural centers" class="w-full h-auto mt-4 rounded-xl shadow-lg border-4 border-white/50" loading="lazy" onerror="this.src='https://placehold.co/400x200/0ea5e9/ffffff?text=Map+Placeholder'"/>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="illustration illustration--alt" aria-hidden="true">
-        <svg viewBox="0 0 560 420" class="illustration__svg">
-          <title>KMB Network Graphic</title>
-          <rect width="560" height="420" rx="36" fill="#f2f7fa"/>
-          <g stroke="#14b8a6" stroke-width="3">
-            <line x1="140" y1="120" x2="280" y2="210"/>
-            <line x1="280" y1="210" x2="420" y2="110"/>
-            <line x1="280" y1="210" x2="450" y2="250"/>
-            <line x1="280" y1="210" x2="150" y2="300"/>
-            <line x1="150" y1="300" x2="420" y2="350"/>
-          </g>
-          <g fill="#fff" stroke="#0f3d52" stroke-width="3">
-            <circle cx="140" cy="120" r="34"/>
-            <circle cx="280" cy="210" r="42"/>
-            <circle cx="420" cy="110" r="30"/>
-            <circle cx="450" cy="250" r="34"/>
-            <circle cx="150" cy="300" r="36"/>
-            <circle cx="420" cy="350" r="32"/>
-          </g>
-          <g fill="#14b8a6">
-            <circle cx="140" cy="120" r="14"/>
-            <circle cx="280" cy="210" r="18"/>
-            <circle cx="420" cy="110" r="12"/>
-            <circle cx="450" cy="250" r="14"/>
-            <circle cx="150" cy="300" r="15"/>
-            <circle cx="420" cy="350" r="13"/>
-          </g>
-        </svg>
-      </div>
-    </div>
-  </section>
+    </section>
+
+    <!-- --- NEW SECTION: IMPACT STORIES (Testimonials) --- -->
+    <section id="impact" class="section motto-section pt-12 pb-12 lg:pt-16 lg:pb-16 relative overflow-hidden">
+        <div class="container text-center max-w-5xl mx-auto">
+            <h2 class="section-title text-4xl font-bold text-navy-dark mb-6 reveal-item">Stories of Renewed Hope</h2>
+            <p class="text-lg text-gray-700 mb-12 reveal-item" style="transition-delay: 0.1s;">See the real, life-changing impact of your support and our missionaries' dedication.</p>
+
+            <div class="grid md:grid-cols-2 gap-10">
+                <!-- Impact Card 1 -->
+                <div class="glass-card text-left p-6 reveal-item" style="transition-delay: 0.2s;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/60x60/f97316/ffffff?text=P.J" alt="Portrait of a rescued man" class="w-16 h-16 rounded-full object-cover mr-4 border-4 border-accent-orange/50" loading="lazy" onerror="this.src='https://placehold.co/60x60/f97316/ffffff?text=P.J'"/>
+                        <div>
+                            <p class="font-display font-bold text-lg text-navy-dark">Peter Johnson</p>
+                            <p class="text-xs text-gray-500">Rescued, Age 68, Mental Health Care</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 italic border-l-4 border-primary-teal pl-4">
+                        "Abandoned on the roadside, Peter found not just shelter, but dedicated mental health care and companionship. He is now stable, helping with garden work, and enjoys weekly community visits."
+                    </blockquote>
+                    <a href="pages/impact-peter.html" class="text-primary-teal text-sm font-semibold mt-4 inline-block hover:underline">Read Full Story &rarr;</a>
+                </div>
+
+                <!-- Impact Card 2 -->
+                <div class="glass-card text-left p-6 reveal-item" style="transition-delay: 0.3s;">
+                    <div class="flex items-center mb-4">
+                        <img src="https://placehold.co/60x60/0ea5e9/ffffff?text=A.M" alt="Portrait of an elderly woman smiling" class="w-16 h-16 rounded-full object-cover mr-4 border-4 border-primary-blue/50" loading="lazy" onerror="this.src='https://placehold.co/60x60/0ea5e9/ffffff?text=A.M'"/>
+                        <div>
+                            <p class="font-display font-bold text-lg text-navy-dark">Ammal Mary</p>
+                            <p class="text-xs text-gray-500">Elderly Care, Age 82, Chronic Care</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-700 italic border-l-4 border-primary-blue pl-4">
+                        "After a lifetime of hard labor, Ammal needed constant medical attention. Our team provides her with daily BP medication, physiotherapy, and the simple joy of a caring community."
+                    </blockquote>
+                    <a href="pages/impact-ammal.html" class="text-primary-blue text-sm font-semibold mt-4 inline-block hover:underline">Read Full Story &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Milestones/Timeline section was removed in the previous step and will not be re-added here. -->
+
+    <!-- --- FINAL CTA (Isolated Section for Impact) --- -->
+    <section id="cta" class="section bg-primary-teal pt-20 pb-20 lg:pt-24 lg:pb-24">
+        <div class="container text-center max-w-4xl mx-auto">
+            <h2 class="font-display text-4xl md:text-5xl font-extrabold text-white mb-6 reveal-item">Your Compassion Makes a Difference.</h2>
+            <p class="text-xl text-white/90 leading-relaxed mb-10 reveal-item" style="transition-delay: 0.2s;">Support our non-profit, missionary-driven work. Every donation ensures dignity, nutrition, and medical care reaches the most vulnerable.</p>
+            
+            <div class="flex flex-wrap gap-6 justify-center reveal-item" style="transition-delay: 0.4s;">
+                <a href="pages/donate.html" class="btn btn--cta bg-accent-orange text-navy-dark border-2 border-white hover:bg-[#ff8c3a] transform hover:scale-[1.07] shadow-2xl shadow-accent-orange/40">
+                    <i data-lucide="heart" class="w-5 h-5 mr-2"></i> Make a Secure Donation
+                </a>
+                <a href="pages/volunteer.html" class="btn btn--cta bg-white text-navy-dark border-2 border-primary-teal hover:bg-gray-100">
+                    <i data-lucide="users" class="w-5 h-5 mr-2"></i> Become a Volunteer
+                </a>
+            </div>
+        </div>
+    </section>
+
 </main>
 
-<footer class="site-footer">
-  <div class="container footer__grid">
-    <div class="footer__brand">
-      <a class="brand__link" href="index.html">
-        <img src="assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo brand__logo--footer" loading="lazy"/>
-        <span class="visually-hidden">Kunjachan Missionary Bhavan</span>
-      </a>
-      <p class="footer__about">A missionary home for compassionate care, dignity, and hope.</p>
+<!-- --- 2. Consistent Footer - High Contrast --- -->
+<footer class="site-footer bg-navy-dark text-white">
+    <div class="container footer__grid pt-16 pb-10">
+        <div class="footer__brand">
+            <a class="brand__link flex items-center mb-4" href="index.html">
+                <!-- Using the file path from your requirements -->
+                <img src="assets/logo/kunjachanMissionaryLogo.png" onerror="this.src='https://placehold.co/40x40/14b8a6/ffffff?text=HC'" alt="KMB Health Center Logo" class="brand__logo h-8 w-8 mr-2 rounded-full" loading="lazy"/>
+                <span class="font-display text-xl font-bold text-white">KMB Health</span>
+            </a>
+            <p class="footer__about text-gray-400 text-sm">A missionary home for compassionate care, dignity, and essential health aid, serving Kerala's rural communities.</p>
+        </div>
+        
+        <nav class="footer__nav" aria-label="Footer links">
+            <h3 class="footer__title">Explore</h3>
+            <ul class="space-y-2">
+                <li><a href="pages/about.html" class="text-gray-400 hover:text-primary-teal transition duration-200">About Our Mission</a></li>
+                <li><a href="#health-focus" class="text-gray-400 hover:text-primary-teal transition duration-200">Health Focus</a></li>
+                <li><a href="#network" class="text-gray-400 hover:text-primary-teal transition duration-200">Rural Network</a></li>
+                <li><a href="pages/sponsors.html" class="text-gray-400 hover:text-primary-teal transition duration-200">Sponsor Our Work</a></li>
+                <li><a href="pages/volunteer.html" class="text-gray-400 hover:text-primary-teal transition duration-200">Volunteer</a></li>
+                
+            </ul>
+        </nav>
+        
+        <div class="footer__contact">
+            <h3 class="footer__title">Connect</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li><i data-lucide="map-pin" class="inline-block w-4 h-4 mr-2 text-primary-blue"></i>Missionary Road, Kottayam, Kerala</li>
+                <li><i data-lucide="phone" class="inline-block w-4 h-4 mr-2 text-primary-blue"></i>+91 481 000 0000</li>
+                <li><i data-lucide="mail" class="inline-block w-4 h-4 mr-2 text-primary-blue"></i>care@kmbhealth.org</li>
+            </ul>
+        </div>
+        
+        <div class="footer__newsletter">
+            <h3 class="footer__title">Transparency</h3>
+            <ul class="space-y-2 text-gray-400">
+                <!-- ADDED PROPER TIMELINE BUTTON -->
+                <li>
+                    <a href="pages/timeline.html" class="timeline-btn text-sm font-body shadow-lg w-full">
+                        <i data-lucide="clock" class="inline-block w-4 h-4 mr-2"></i> Full Project Timeline
+                    </a>
+                </li>
+                <li><a href="pages/gallery.html" class="text-gray-400 hover:text-primary-teal transition duration-200 mt-4 inline-flex items-center"><i data-lucide="image" class="inline-block w-4 h-4 mr-2"></i>Gallery & Proof of Impact</a></li>
+                <li class="mt-4">
+                    <a href="pages/donate.html" class="btn btn--primary text-sm shadow-xl w-full">
+                        <i data-lucide="heart" class="w-4 h-4 mr-2"></i> Donate Now
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <nav class="footer__nav" aria-label="Footer links">
-      <h3 class="footer__title">Links</h3>
-      <ul>
-        <li><a href="pages/timeline.html">Timeline</a></li>
-        <li><a href="pages/about.html">About</a></li>
-        <li><a href="pages/institutions.html">Institutions</a></li>
-        <li><a href="pages/sponsors.html">Sponsors</a></li>
-        <li><a href="pages/volunteer.html">Volunteer</a></li>
-        <li><a href="pages/events.html">Events</a></li>
-        <li><a href="pages/gallery.html">Gallery</a></li>
-        <li><a href="pages/contact.html">Contact</a></li>
-      </ul>
-    </nav>
-    <div class="footer__contact">
-      <h3 class="footer__title">Contact</h3>
-      <ul>
-        <li>Missionary Road, Kottayam</li>
-        <li>+91 481 000 0000</li>
-        <li>hello@kmb.org</li>
-      </ul>
+    
+    <div class="container border-t border-gray-700 pt-4 text-center">
+        <p class="text-gray-500 text-xs">&copy; <span id="year"></span> Kunjachan Missionary Bhavan Health Center. All rights reserved.</p>
     </div>
-    <div class="footer__newsletter">
-      <h3 class="footer__title">Stay in touch</h3>
-      <form class="footer__form" aria-label="Newsletter signup">
-        <label class="visually-hidden" for="footerEmail">Email</label>
-        <input id="footerEmail" type="email" placeholder="Enter your email" required/>
-        <button type="submit" class="btn btn--accent">Subscribe</button>
-      </form>
-    </div>
-  </div>
-  <div class="container footer__bottom">
-    <p>&copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights reserved.</p>
-  </div>
 </footer>
 
-<script src="assets/js/main.js"></script>
+<script>
+    // --- JavaScript for Dynamic Effects and Navigation (Consistent) ---
+
+    // 1. Initialize Lucide Icons for all pages
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    });
+
+    // 2. Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 3. Mobile nav toggle logic (Improved)
+    const navToggle = document.querySelector('.nav-toggle');
+    const primaryNav = document.getElementById('primary-nav');
+
+    navToggle.addEventListener('click', () => {
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isOpen);
+        primaryNav.classList.toggle('open');
+        // Prevent body scrolling when mobile menu is open
+        document.body.classList.toggle('overflow-hidden', !isOpen);
+    });
+
+    // 4. Scroll Reveal Effect (Modern Transitions)
+    const observerOptions = {
+        threshold: 0.1, 
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Target all elements marked for reveal
+    document.querySelectorAll('.reveal-item').forEach(item => {
+        observer.observe(item);
+    });
+    
+    // 5. Simple Counter Animation for Stats
+    const animateNumbers = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const elements = entry.target.querySelectorAll('.stat > div:first-child');
+                elements.forEach(el => {
+                    const finalValue = parseInt(el.parentNode.getAttribute('data-count'));
+                    let start = 0;
+                    const duration = 1500;
+                    let startTime = null;
+
+                    const step = (timestamp) => {
+                        if (!startTime) startTime = timestamp;
+                        const progress = Math.min((timestamp - startTime) / duration, 1);
+                        el.textContent = Math.floor(progress * finalValue).toLocaleString('en-IN'); // Use locale string for thousands separator
+
+                        if (progress < 1) {
+                            window.requestAnimationFrame(step);
+                        }
+                    };
+                    window.requestAnimationFrame(step);
+                });
+                observer.unobserve(entry.target);
+            }
+        });
+    };
+
+    const statSection = document.querySelector('.stats');
+    // Observe the parent of the stats grid to trigger the animation
+    if (statSection) {
+        new IntersectionObserver(animateNumbers, { threshold: 0.5 }).observe(statSection.parentNode);
+    }
+</script>
 </body>
 </html>

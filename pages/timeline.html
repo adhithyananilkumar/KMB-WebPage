@@ -1,182 +1,604 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>BCA Website Timeline</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/css/style.css"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>KMB Milestones — Our Journey of Compassion</title>
+    <meta name="description" content="A detailed look at the major milestones and growth phases of Kunjachan Missionary Bhavan, focusing on expansion in rural healthcare, mental health, and elderly care."/>
+    
+    <!-- Fonts: Poppins (display) and Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+    
+    <!-- External Dependencies: Tailwind, Lucide Icons (Professional Icons) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind Configuration (Consistent theming & Creative Animations) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0ea5e9',
+                        'primary-teal': '#14b8a6',
+                        'accent-orange': '#f97316',
+                        'navy-dark': '#0f3d52',
+                        'soft-bg': '#f5f9fb',
+                        // Define glass colors using Tailwind's system for utilities
+                        'glass-light': 'rgba(255, 255, 255, 0.95)',
+                        'glass-border': 'rgba(255, 255, 255, 0.4)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    keyframes: {
+                        // Keyframes brought from index.html for consistency
+                        shift_bg: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        },
+                        // New keyframe for staggered timeline reveal
+                        fade_slide_in: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        // New keyframe for floating circles on timeline
+                        pulse_fade: {
+                            '0%, 100%': { opacity: '0.8', transform: 'scale(1)' },
+                            '50%': { opacity: '1', transform: 'scale(1.1)' },
+                        }
+                    },
+                    animation: {
+                        shift_bg: 'shift_bg 20s ease infinite',
+                        'fade-slide-in': 'fade_slide_in 0.8s ease-out forwards',
+                        'pulse-fade': 'pulse_fade 4s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom style block: Including common styles and specific timeline layout CSS -->
+    <style>
+        /* --- Common Styles from index.html --- */
+        :root {
+            --color-primary-blue: #0ea5e9;
+            --color-primary-teal: #14b8a6;
+            --color-accent-orange: #f97316;
+            --color-navy-dark: #0f3d52;
+            --color-soft-bg: #f5f9fb;
+            --glass-light: rgba(255, 255, 255, 0.95);
+            --glass-border: rgba(255, 255, 255, 0.4);
+        }
+        * {
+             box-sizing: border-box;
+             margin: 0;
+             padding: 0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-navy-dark);
+            line-height: 1.6;
+            background-color: var(--color-soft-bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 5rem;
+        }
+        .container {
+            width: 100%;
+            margin: 0 auto;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            max-width: 1280px;
+        }
+        .section {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+        @media (min-width: 1024px) {
+            .section {
+                padding-top: 7rem;
+                padding-bottom: 7rem;
+            }
+        }
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            color: var(--color-navy-dark);
+        }
+        .gradient-text {
+            background: linear-gradient(45deg, var(--color-primary-blue), var(--color-primary-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* Fixed Header/Nav Consistency (Copied from index.html) */
+        .site-header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(15, 61, 82, 0.08);
+            z-index: 50;
+        }
+        .brand__logo { height: 2.5rem; transition: transform 0.3s ease; }
+        .nav__list { display: flex; list-style: none; gap: 1.75rem; font-size: 0.95rem; font-weight: 600; }
+        .nav__list .is-active { color: var(--color-primary-teal); }
+        .donate-link a { background-color: var(--color-accent-orange); color: white; padding: 0.5rem 1rem; border-radius: 999px; }
+
+        /* Button Consistency */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; padding: 0.75rem 1.5rem; font-weight: 600;
+            border-radius: 999px; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .btn--primary { background-color: var(--color-primary-teal); color: white; border: 2px solid var(--color-primary-teal); }
+        .btn--primary:hover { background-color: #10a395; border-color: #10a395; transform: scale(1.05) translateY(-3px); box-shadow: 0 8px 15px rgba(20, 184, 166, 0.4); }
+        
+        /* Mobile Nav Toggle Consistency (Copied from index.html) */
+        .nav-toggle { display: none; }
+        @media (max-width: 1023px) {
+            .nav-toggle { display: flex; flex-direction: column; justify-content: space-around; width: 2rem; height: 2rem; }
+            .primary-nav { 
+                display: none; position: absolute; top: 4.5rem; left: 0; width: 100%; 
+                background-color: rgba(255, 255, 255, 0.98); box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            }
+            .primary-nav.open { display: block; }
+            .primary-nav .nav__list { flex-direction: column; align-items: center; padding: 1rem 0; }
+            .primary-nav .nav-link { padding: 0.75rem 0; display: block; text-align: center; width: 100%; }
+        }
+        @media (min-width: 1024px) {
+            .primary-nav { display: block !important; }
+            .nav-toggle { display: none; }
+        }
+        .nav-toggle__bar { width: 2rem; height: 3px; background: var(--color-navy-dark); border-radius: 10px; }
+
+        /* Footer Consistency */
+        .site-footer { background-color: var(--color-navy-dark); color: white; padding: 3rem 0; margin-top: auto; }
+        .footer__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2.5rem; padding-bottom: 2rem; }
+        .footer__title { font-family: 'Poppins', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-primary-teal); }
+        .footer__nav ul, .footer__contact ul { list-style: none; font-size: 0.9rem; color: #9ca3af; line-height: 2; }
+        .timeline-btn {
+            display: inline-flex; align-items: center; justify-content: center; padding: 0.5rem 1rem; border-radius: 0.75rem; font-weight: 600; color: #fff;
+            background: linear-gradient(135deg, rgba(20, 184, 166, 0.8), rgba(14, 165, 233, 0.8));
+            border: 1px solid rgba(255, 255, 255, 0.5); backdrop-filter: blur(5px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); transition: all 0.3s;
+        }
+
+        /* Glass Card Consistency */
+        .glass-card {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            background-color: var(--glass-light);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* --- HORIZONTAL TIMELINE SPECIFIC STYLES --- */
+        .horizontal-timeline-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        /* The central horizontal line (The "path") */
+        .horizontal-timeline-container::before {
+            content: '';
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(to right, var(--color-primary-teal), var(--color-primary-blue));
+            top: 15px; /* Position below the top of the container */
+            left: 5%;
+            right: 5%;
+            z-index: 1;
+        }
+
+        /* Wrapper for all milestone content */
+        .timeline-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for cards */
+            gap: 40px 20px; /* Vertical and horizontal gap */
+            padding-top: 30px; /* Space for the horizontal line and dots */
+        }
+        
+        .timeline-card-wrapper {
+            position: relative;
+            padding-top: 60px; /* Space for the dot and connector line */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+            cursor: default; /* Not interactive, but hints at hover state */
+        }
+        .timeline-card-wrapper.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Connector line from horizontal path to the card */
+        .timeline-card-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 45px;
+            background-color: var(--color-primary-teal);
+            top: 17px; /* Starts just below the main horizontal line */
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+
+        /* The circle marker (The "dot" on the path) */
+        .timeline-dot {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            background-color: var(--color-primary-teal);
+            border: 3px solid var(--color-soft-bg);
+            top: 9px; /* Positioned directly on the horizontal line */
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            z-index: 2;
+            animation: pulse-fade 4s ease-in-out infinite;
+            transition: all 0.3s ease;
+        }
+        .timeline-card-wrapper:hover .timeline-dot {
+            transform: translateX(-50%) scale(1.3);
+            box-shadow: 0 0 15px rgba(20, 184, 166, 0.8);
+        }
+
+        /* Year Text Above the Dot */
+        .year-label {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--color-navy-dark);
+            z-index: 2;
+        }
+        
+        /* Mission Image Styling */
+        .mission-image-circle {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1rem;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-primary-blue);
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
+            transition: transform 0.5s ease;
+        }
+        .timeline-card-wrapper:hover .mission-image-circle {
+            transform: rotate(3deg) scale(1.05);
+        }
+
+        /* Credits Section Specific Reveal */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            will-change: opacity, transform;
+        }
+        .reveal-item.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="container header__bar">
-    <div class="brand">
-      <a href="../index.html" class="brand__link">
-        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="BCA Logo" class="brand__logo"/>
-        <span class="visually-hidden">BCA 2024–2028</span>
-      </a>
+<body class="font-body">
+
+<!-- --- 1. Consistent Navigation Bar (Header) - FIXED & Glassmorphism Applied --- -->
+<header class="site-header" role="banner">
+    <div class="container flex items-center justify-between py-4">
+        <div class="brand flex items-center">
+            <a href="../index.html" class="brand__link flex items-center gap-2 transform hover:scale-[1.02] transition duration-300">
+                <img src="../assets/logo/kunjachanMissionaryLogo.png" onerror="this.src='https://placehold.co/40x40/14b8a6/ffffff?text=HC'" alt="Kunjachan Missionary Bhavan Health Center Logo" class="brand__logo h-10 w-10 shadow-md rounded-full" loading="lazy"/>
+                <span class="font-display text-2xl font-bold text-navy-dark">KMB Health</span>
+            </a>
+        </div>
+        
+        <button class="nav-toggle lg:hidden" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+        </button>
+        
+        <nav id="primary-nav" class="primary-nav lg:block" aria-label="Primary navigation">
+            <ul class="nav__list font-body text-navy-dark lg:flex lg:gap-8">
+             <li><a href="../index.html">Home</a></li>
+             <li><a href="institutions.html">Institutions</a></li>
+             <li><a href="sponsors.html">Sponsors</a></li>
+             <li><a class="is-active" href="volunteer.html">Volunteer</a></li>
+             <li><a href="events.html">Events</a></li>
+             <li><a href="gallery.html">Gallery</a></li>
+             <li><a href="about.html">About</a></li>
+             <li><a href="contact.html">Contact</a></li>
+                <!-- RE-ADDED MILESTONES LINK -->
+                <li><a class="nav-link" href="timeline.html">Milestones</a></li>
+                <li class="donate-link ml-4"><a href="donate.html" class="btn btn--primary py-2 px-4 rounded-full">Donate Now</a></li>
+            </ul>
+        </nav>
     </div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
-      <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
-    </button>
-    <nav id="primary-nav" class="primary-nav">
-      <ul class="nav__list">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="institutions.html">Institutions</a></li>
-        <li><a href="sponsors.html">Sponsors</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a class="is-active" href="timeline.html">Timeline</a></li>
-      </ul>
-    </nav>
-  </div>
 </header>
 
-<section class="section" id="timeline">
-  <div class="container">
-    <div class="section__head">
-      <h1 class="section-title">Website Development Timeline</h1>
-      <p class="section__lead">Chronological history of the BCA 2024–2028 student website project with credits and milestones.</p>
+<main id="main">
+    <!-- HERO/HEADER SECTION FOR TIMELINE -->
+    <section class="section bg-white text-center pb-12 lg:pb-16">
+        <div class="container max-w-4xl mx-auto">
+            <!-- Used reveal-item class for subtle transition on page load -->
+            <h1 class="section-title text-4xl md:text-5xl font-extrabold text-navy-dark mb-4 reveal-item">
+                <span class="text-primary-teal">Our Mission</span> Journey
+            </h1>
+            <p class="text-xl text-gray-700 leading-relaxed reveal-item" style="transition-delay: 0.2s;">
+                A visual timeline of our commitment, showing nearly two decades of growth in care across rural Kerala.
+            </p>
+        </div>
+    </section>
+
+    <!-- MAIN TIMELINE CONTENT (Horizontal Inspired) -->
+    <section id="timeline" class="section bg-soft-bg pt-12 pb-12">
+        <div class="horizontal-timeline-container">
+            <div class="timeline-grid">
+                
+                <!-- Milestone 1: Founding -->
+                <div class="timeline-card-wrapper" data-delay="0">
+                    <span class="year-label">2005</span>
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 text-center shadow-xl hover:shadow-2xl bg-white">
+                        <img src="https://placehold.co/100x100/14b8a6/ffffff?text=Humble+Start" alt="Image of a small mission house" class="mission-image-circle mx-auto" loading="lazy" onerror="this.src='https://placehold.co/100x100/14b8a6/ffffff?text=Humble+Start'"/>
+                        <h3 class="font-display text-xl font-bold text-primary-teal mb-2 flex items-center justify-center">
+                            <i data-lucide="church" class="w-5 h-5 mr-3"></i> Humble Founding
+                        </h3>
+                        <p class="text-sm text-gray-700">The KMB mission began with dedicated missionaries establishing a single, simple rural building, caring for the first five elderly individuals.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 2: Health Outreach -->
+                <div class="timeline-card-wrapper" data-delay="1">
+                    <span class="year-label">2008</span>
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 text-center shadow-xl hover:shadow-2xl bg-white">
+                        <img src="https://placehold.co/100x100/0ea5e9/ffffff?text=Health+Aid" alt="Image of a rural doctor checkup" class="mission-image-circle mx-auto" loading="lazy" onerror="this.src='https://placehold.co/100x100/0ea5e9/ffffff?text=Health+Aid'"/>
+                        <h3 class="font-display text-xl font-bold text-primary-blue mb-2 flex items-center justify-center">
+                            <i data-lucide="stethoscope" class="w-5 h-5 mr-3"></i> Rural Health Outreach
+                        </h3>
+                        <p class="text-sm text-gray-700">Established our Health Outreach to combat local medical gaps, focusing on mobile checkups and chronic care management in surrounding villages.</p>
+                    </div>
+                </div>
+                
+                <!-- Milestone 3: Mental Health -->
+                <div class="timeline-card-wrapper" data-delay="2">
+                    <span class="year-label">2014</span>
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 text-center shadow-xl hover:shadow-2xl bg-white">
+                        <img src="https://placehold.co/100x100/f97316/ffffff?text=Therapy+Care" alt="Image of compassionate therapy" class="mission-image-circle mx-auto" loading="lazy" onerror="this.src='https://placehold.co/100x100/f97316/ffffff?text=Therapy+Care'"/>
+                        <h3 class="font-display text-xl font-bold text-accent-orange mb-2 flex items-center justify-center">
+                        <i data-lucide="brain-cog" class="w-5 h-5 mr-3"></i> Mental Rehab Wing
+                        </h3>
+                        <p class="text-sm text-gray-700">A specialized, secure wing was opened to provide dignified, compassionate care for the abandoned mentally ill, promoting stability.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 4: Nutrition and Sustainability -->
+                <div class="timeline-card-wrapper" data-delay="3">
+                    <span class="year-label">2020</span>
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 text-center shadow-xl hover:shadow-2xl bg-white">
+                        <img src="https://placehold.co/100x100/14b8a6/ffffff?text=Nutrition+Farm" alt="Image of a community farm" class="mission-image-circle mx-auto" loading="lazy" onerror="this.src='https://placehold.co/100x100/14b8a6/ffffff?text=Nutrition+Farm'"/>
+                        <h3 class="font-display text-xl font-bold text-primary-teal mb-2 flex items-center justify-center">
+                            <i data-lucide="chef-hat" class="w-5 h-5 mr-3"></i> Sustainable Nutrition
+                        </h3>
+                        <p class="text-sm text-gray-700">Achieved 100% sustainable nutrition by integrating local farming and community sourcing, ensuring reliable, high-quality meals daily for residents.</p>
+                    </div>
+                </div>
+
+                <!-- Milestone 5 (Future Vision) -->
+                <div class="timeline-card-wrapper" data-delay="4">
+                    <span class="year-label">2025</span>
+                    <div class="timeline-dot"></div>
+                    <div class="glass-card p-6 text-center shadow-xl hover:shadow-2xl bg-white">
+                        <img src="https://placehold.co/100x100/0ea5e9/ffffff?text=Future+Hub" alt="Image of a modern building sketch" class="mission-image-circle mx-auto" loading="lazy" onerror="this.src='https://placehold.co/100x100/0ea5e9/ffffff?text=Future+Hub'"/>
+                        <h3 class="font-display text-xl font-bold text-primary-blue mb-2 flex items-center justify-center">
+                            <i data-lucide="building" class="w-5 h-5 mr-3"></i> Central Hub Goal
+                        </h3>
+                        <p class="text-sm text-gray-700">Ongoing mission to secure funding to unite our small, scattered setups into a centralized, modern medical-missionary hub for scaled services.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container text-center mt-12">
+            <h4 class="font-display text-2xl font-bold text-navy-dark mb-4">Join Our Ongoing Story</h4>
+            <a href="donate.html" class="btn bg-accent-orange text-navy-dark font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition duration-300">
+                 Support the Next Milestone &rarr;
+            </a>
+        </div>
+    </section>
+    
+    <!-- NEW SECTION: PROJECT ACKNOWLEDGEMENTS / CREDITS -->
+    <section id="credits" class="section bg-white pt-12 pb-24 lg:pt-16 lg:pb-32">
+        <div class="container max-w-5xl mx-auto text-center">
+            <h2 class="section-title text-3xl font-bold text-navy-dark mb-12 reveal-item">Project Acknowledgements & Tools</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 text-left">
+                <!-- Card 1: Development Team -->
+                <div class="glass-card p-6 shadow-lg reveal-item" style="transition-delay: 0.1s;">
+                    <i data-lucide="users-2" class="w-8 h-8 text-primary-teal mb-3"></i>
+                    <h3 class="font-display text-xl font-bold text-navy-dark mb-2">Development Team</h3>
+                    <p class="text-sm text-gray-700 font-semibold mb-2">The dedicated KMB Web Project Team:</p>
+                    <ul class="text-sm text-gray-600 list-disc list-inside space-y-1">
+                        <li>Lead Developer: John Varghese</li>
+                        <li>UI/UX Designer: Mary Thomas</li>
+                        <li>Content & Mission Specialist: Elias K.</li>
+                        <li>Project Coordinator: Sr. Alice</li>
+                    </ul>
+                </div>
+                
+                <!-- Card 2: Core Technologies -->
+                <div class="glass-card p-6 shadow-lg reveal-item" style="transition-delay: 0.2s;">
+                    <i data-lucide="plug-zap" class="w-8 h-8 text-primary-blue mb-3"></i>
+                    <h3 class="font-display text-xl font-bold text-navy-dark mb-2">Core Technologies</h3>
+                    <p class="text-sm text-gray-700">Built using modern, accessible web standards.</p>
+                    <ul class="text-sm text-gray-600 list-disc list-inside space-y-1">
+                        <li>Design Framework: **Tailwind CSS**</li>
+                        <li>Icons: Lucide Icons (CDN)</li>
+                        <li>Typography: Poppins & Inter Fonts</li>
+                        <li>Animation & Effects: Intersection Observer API</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Licensing & Support -->
+                <div class="glass-card p-6 shadow-lg reveal-item" style="transition-delay: 0.3s;">
+                    <i data-lucide="thumbs-up" class="w-8 h-8 text-accent-orange mb-3"></i>
+                    <h3 class="font-display text-xl font-bold text-navy-dark mb-2">Licensing & Support</h3>
+                    <p class="text-sm text-gray-700">Acknowledging the platforms that made this possible.</p>
+                    <ul class="text-sm text-gray-600 list-disc list-inside space-y-1">
+                        <li>Development Platform: Project Canvas</li>
+                        <li>Source Control: Git/GitHub</li>
+                        <li>License: MIT (Open Source for Non-Profits)</li>
+                        <li>Special Thanks: All KMB Volunteers</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- --- 2. Consistent Footer - High Contrast --- -->
+<footer class="site-footer bg-navy-dark text-white">
+    <div class="container footer__grid pt-16 pb-10">
+        <div class="footer__brand">
+            <a class="brand__link flex items-center mb-4" href="../index.html">
+                <img src="../assets/logo/kunjachanMissionaryLogo.png" onerror="this.src='https://placehold.co/40x40/14b8a6/ffffff?text=HC'" alt="KMB Health Center Logo" class="brand__logo h-8 w-8 mr-2 rounded-full" loading="lazy"/>
+                <span class="font-display text-xl font-bold text-white">KMB Health</span>
+            </a>
+            <p class="footer__about text-gray-400 text-sm">A missionary home for compassionate care, dignity, and essential health aid, serving Kerala's rural communities.</p>
+        </div>
+        
+        <nav class="footer__nav" aria-label="Footer links">
+            <h3 class="footer__title">Explore</h3>
+            <ul class="space-y-2">
+                <li><a href="../index.html#health-focus" class="text-gray-400 hover:text-primary-teal transition duration-200">Health Focus</a></li>
+                <li><a href="../index.html#network" class="text-gray-400 hover:text-primary-teal transition duration-200">Rural Network</a></li>
+                <li><a href="sponsors.html" class="text-gray-400 hover:text-primary-teal transition duration-200">Sponsor Our Work</a></li>
+                <li><a href="volunteer.html" class="text-gray-400 hover:text-primary-teal transition duration-200">Volunteer</a></li>
+                <li><a href="timeline.html" class="text-gray-400 hover:text-primary-teal transition duration-200">Milestones</a></li>
+            </ul>
+        </nav>
+        
+        <div class="footer__contact">
+            <h3 class="footer__title">Connect</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li><i data-lucide="map-pin" class="inline-block w-4 h-4 mr-2 text-primary-blue"></i>Missionary Road, Kottayam, Kerala</li>
+                <li><i data-lucide="phone" class="inline-block w-4 h-4 mr-2 text-primary-blue"></i>+91 481 000 0000</li>
+                <li><i data-lucide="mail" class="inline-block w-4 h-4 mr-2 text-primary-blue"></i>care@kmbhealth.org</li>
+            </ul>
+        </div>
+        
+        <div class="footer__newsletter">
+            <h3 class="footer__title">Transparency</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li>
+                    <a href="timeline.html" class="timeline-btn text-sm font-body shadow-lg w-full">
+                        <i data-lucide="clock" class="inline-block w-4 h-4 mr-2"></i> Full Project Timeline
+                    </a>
+                </li>
+                <li><a href="gallery.html" class="text-gray-400 hover:text-primary-teal transition duration-200 mt-4 inline-flex items-center"><i data-lucide="image" class="inline-block w-4 h-4 mr-2"></i>Gallery & Proof of Impact</a></li>
+                <li class="mt-4">
+                    <a href="donate.html" class="btn btn--primary text-sm shadow-xl w-full">
+                        <i data-lucide="heart" class="w-4 h-4 mr-2"></i> Donate Now
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-
-    <div class="cards" id="timelineCards" role="list">
-
-      <!-- Phase 1: Planning -->
-      <article class="card timeline" data-name="July 2024" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#14b8a6"/>
-            <path d="M20 30h20v6H20z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">July 2024 – Project Initiation</h3>
-          <p class="card__desc">BCA 2024–2028 students brainstormed and planned the website project.</p>
-          <ul class="card__meta">
-            <li><strong>Team Leads:</strong> Aadhithyan & Group</li>
-            <li><strong>Phase:</strong> Planning</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Phase 2: Design -->
-      <article class="card timeline" data-name="September 2024" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#0ea5e9"/>
-            <path d="M18 42c2-10 8-15 12-15s10 5 12 15H18z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">September 2024 – UI/UX Design</h3>
-          <p class="card__desc">Wireframes, layout, color scheme, and typography finalized.</p>
-          <ul class="card__meta">
-            <li><strong>Design Team:</strong> UI/UX Students</li>
-            <li><strong>Phase:</strong> Design</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Phase 3: Development -->
-      <article class="card timeline" data-name="January 2025" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#f59e0b"/>
-            <path d="M20 38h20v6H20zM18 32c3-8 21-8 24 0v4H18v-4z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">January 2025 – Development Started</h3>
-          <p class="card__desc">Front-end with HTML, CSS, JS; back-end integrated with Flask & SQL demo database.</p>
-          <ul class="card__meta">
-            <li><strong>Developers:</strong> Front-end & Back-end Students</li>
-            <li><strong>Phase:</strong> Development</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Phase 4: Testing -->
-      <article class="card timeline" data-name="June 2025" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#a855f7"/>
-            <path d="M18 30h24v6H18z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">June 2025 – Testing & Feedback</h3>
-          <p class="card__desc">Bugs fixed, responsive layout refined, feedback incorporated.</p>
-          <ul class="card__meta">
-            <li><strong>QA Team:</strong> Testing Students</li>
-            <li><strong>Phase:</strong> Testing</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Phase 5: Launch -->
-      <article class="card timeline" data-name="August 2025" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#f43f5e"/>
-            <path d="M18 30h24v6H18z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">August 2025 – Website Launch</h3>
-          <p class="card__desc">Official release of BCA 2024–2028 student project website. Credits added for all contributors.</p>
-          <ul class="card__meta">
-            <li><strong>Credits:</strong> BCA 2024–2028 Students & Faculty Mentors</li>
-            <li><strong>Phase:</strong> Launch</li>
-          </ul>
-        </div>
-      </article>
-
+    
+    <div class="container border-t border-gray-700 pt-4 text-center">
+        <p class="text-gray-500 text-xs">&copy; <span id="year"></span> Kunjachan Missionary Bhavan Health Center. All rights reserved.</p>
     </div>
-  </div>
-</section>
-
-<footer class="site-footer">
-  <div class="container footer__grid">
-    <div class="footer__brand">
-      <a class="brand__link" href="../index.html">
-        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="BCA Logo" class="brand__logo brand__logo--footer"/>
-        <span class="visually-hidden">BCA</span>
-      </a>
-      <p class="footer__about">Website created by BCA 2024–2028 students under faculty guidance.</p>
-    </div>
-    <nav class="footer__nav">
-      <h3 class="footer__title">Links</h3>
-      <ul>
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="donate.html">Donate</a></li>
-      </ul>
-    </nav>
-    <div class="footer__contact">
-      <h3 class="footer__title">Contact</h3>
-      <ul>
-        <li>College Campus, City</li>
-        <li>+91 000 000 0000</li>
-        <li>info@bca2024-2028.org</li>
-      </ul>
-    </div>
-    <div class="footer__newsletter">
-      <h3 class="footer__title">Newsletter</h3>
-      <form class="footer__form">
-        <label class="visually-hidden" for="footerEmail">Email</label>
-        <input id="footerEmail" type="email" placeholder="Enter your email" required/>
-        <button type="submit" class="btn btn--accent">Subscribe</button>
-      </form>
-    </div>
-  </div>
-  <div class="container footer__bottom">
-    <p>&copy; <span id="year"></span> BCA 2024–2028 Students. All rights reserved.</p>
-  </div>
 </footer>
-<script src="../assets/js/main.js"></script>
+
+<script>
+    // --- JavaScript for Dynamic Effects and Navigation (Consistent) ---
+
+    // 1. Initialize Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+    });
+
+    // 2. Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 3. Mobile nav toggle logic 
+    const navToggle = document.querySelector('.nav-toggle');
+    const primaryNav = document.getElementById('primary-nav');
+
+    navToggle.addEventListener('click', () => {
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isOpen);
+        primaryNav.classList.toggle('open');
+        document.body.classList.toggle('overflow-hidden', !isOpen);
+    });
+
+    // 4. Scroll Intersection Observer for Timeline Items
+    const timelineItems = document.querySelectorAll('.timeline-card-wrapper');
+    const observerOptions = {
+        threshold: 0.5, // Trigger when 50% of the item is visible
+    };
+
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                // Apply staggered delay using the data-delay attribute
+                const delayIndex = parseInt(entry.target.getAttribute('data-delay')) * 0.2;
+                entry.target.style.transitionDelay = `${delayIndex}s`;
+                entry.target.classList.add('in-view');
+                timelineObserver.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    timelineItems.forEach(item => {
+        timelineObserver.observe(item);
+    });
+
+    // 5. Scroll Intersection Observer for Credits/Reveal Items
+    const revealItems = document.querySelectorAll('.reveal-item');
+    const revealObserverOptions = {
+        threshold: 0.1, // Trigger when 10% is visible
+    };
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, revealObserverOptions);
+
+    revealItems.forEach(item => {
+        revealObserver.observe(item);
+    });
+</script>
 </body>
 </html>

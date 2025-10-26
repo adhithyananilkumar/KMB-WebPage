@@ -1,130 +1,491 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>KMB Gallery</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="../assets/css/style.css"/>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Gallery - Kunjachan Missionary Bhavan Health Center</title>
+    <meta name="description" content="Gallery of Kunjachan Missionary Bhavan — moments of compassion, care, and service. View our impact photos."/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#0ea5e9',
+                        'primary-teal': '#14b8a6',
+                        'accent-orange': '#f97316',
+                        'navy-dark': '#0f3d52',
+                        'soft-bg': '#f5f9fb',
+                        'glass-light': 'rgba(255, 255, 255, 0.95)',
+                        'glass-border': 'rgba(255, 255, 255, 0.4)',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Poppins', 'sans-serif'],
+                    },
+                    keyframes: {
+                        float_y: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
+                        slide_in_up: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } }
+                    },
+                    animation: {
+                        float_y: 'float_y 3s ease-in-out infinite',
+                        'slide-in-up': 'slide_in_up 0.8s ease-out forwards',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* --- 1. Custom Properties (Design Token System) --- */
+        :root {
+            --color-primary-blue: #0ea5e9;
+            --color-primary-teal: #14b8a6;
+            --color-accent-orange: #f97316;
+            --color-navy-dark: #0f3d52;
+            --color-white: #ffffff;
+            /* Footer/Header colors */
+            --color-soft-bg: #f5f9fb;
+        }
+
+        /* --- 2. Base & Utility Overrides --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-navy-dark);
+            line-height: 1.6;
+            background-color: var(--color-soft-bg);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-top: 5rem; /* Base padding for fixed header */
+        }
+        .container { max-width: 1280px; margin: 0 auto; padding-left: 1.5rem; padding-right: 1.5rem; width: 100%; }
+        .site-header {
+            position: fixed; width: 100%; top: 0; left: 0; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.9); box-shadow: 0 2px 10px rgba(15, 61, 82, 0.08); z-index: 50;
+        }
+        .brand__logo { height: 2.5rem; transition: transform 0.3s ease; }
+        .nav__list { display: flex; list-style: none; gap: 1.75rem; font-size: 0.95rem; font-weight: 600; }
+        .nav__list .is-active { color: var(--color-primary-teal); }
+        .nav__list a:not(.btn):hover { color: var(--color-primary-blue); transform: translateY(-2px); }
+        .nav-toggle { display: flex; flex-direction: column; justify-content: space-around; width: 2rem; height: 2rem; background: transparent; border: none; cursor: pointer; padding: 0; z-index: 100; }
+        .nav-toggle__bar { width: 2rem; height: 3px; background: var(--color-navy-dark); border-radius: 10px; transition: all 0.3s linear; transform-origin: 1px; }
+        
+        /* Mobile Nav Overrides */
+        @media (max-width: 1023px) {
+            .primary-nav { position: absolute; top: 4.5rem; left: 0; width: 100%; padding: 1rem 0; box-shadow: 0 10px 20px rgba(0,0,0,0.05); transition: all 0.3s ease-in-out; transform: translateY(0); opacity: 0; pointer-events: none; background-color: rgba(255, 255, 255, 0.98); }
+            .primary-nav.open { opacity: 1; pointer-events: auto; }
+            .primary-nav .nav__list { flex-direction: column; align-items: center; gap: 1rem; }
+        }
+        @media (min-width: 1024px) { .primary-nav { display: block !important; } .nav-toggle { display: none; } }
+        
+        /* Scroll Reveal Effect (Consistent with index.html) */
+        .reveal-item { opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; will-change: opacity, transform; }
+        .reveal-item.in-view { opacity: 1; transform: translateY(0); }
+
+        /* Gradient Text Utility */
+        .gradient-text {
+            background: linear-gradient(45deg, var(--color-primary-teal), var(--color-primary-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+
+        /* --- 3. Gallery Card Styles (Focus on visual flair and interaction) --- */
+        .gallery-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
+            background-color: var(--color-white);
+        }
+        .gallery-card img {
+            width: 100%;
+            height: 300px; /* Consistent height for grid */
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.6s ease;
+            filter: brightness(0.95);
+        }
+        .gallery-card:hover img {
+            transform: scale(1.1);
+            filter: brightness(1);
+        }
+        .gallery-card__overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(15, 61, 82, 0.5) 0%, transparent 50%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 1.5rem;
+        }
+        .gallery-card:hover .gallery-card__overlay {
+            opacity: 1;
+        }
+        .gallery-card .lucide { transition: transform 0.3s ease; }
+        .gallery-card:hover .lucide { transform: scale(1.2) translateY(-5px); }
+
+        /* --- 4. Lightbox/Modal Styles (Added proper transition for pop-up effect) --- */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease; /* Fade in/out background */
+            padding: 1rem;
+        }
+        .lightbox.open {
+            visibility: visible;
+            opacity: 1;
+        }
+        .lightbox__content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            transform: scale(0.7); /* Initial smaller size for pop-up effect */
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* Springy transition for scale */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .lightbox.open .lightbox__content {
+            transform: scale(1); /* Full size when open */
+        }
+        .lightbox img {
+            display: block;
+            max-width: 100%;
+            max-height: 80vh; /* Max height for image */
+            border-radius: 0.75rem;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+        }
+        .lightbox__close {
+            position: absolute;
+            top: -40px; /* Moved slightly higher */
+            right: 0px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2.5rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: color 0.2s;
+            opacity: 0.8;
+        }
+        .lightbox__close:hover {
+            color: var(--color-primary-teal);
+            opacity: 1;
+        }
+        .lightbox__caption {
+            color: white;
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-family: 'Inter', sans-serif;
+            max-width: 90%;
+        }
+        /* Ensure body doesn't scroll when lightbox is open */
+        body.overflow-hidden {
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body>
-<header class="site-header">
-  <div class="container header__bar">
-    <div class="brand">
-      <a href="../index.html" class="brand__link">
-        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo"/>
-        <span class="visually-hidden">KMB</span>
-      </a>
+
+<body class="font-body">
+
+<header class="site-header" role="banner">
+    <div class="container flex items-center justify-between py-4">
+        <div class="brand flex items-center">
+            <a href="../index.html" class="brand__link flex items-center gap-2 transform hover:scale-[1.02] transition duration-300">
+                <img src="../assets/logo/kunjachanMissionaryLogo.png" onerror="this.src='https://placehold.co/40x40/14b8a6/ffffff?text=HC'" alt="KMB Health Center Logo" class="brand__logo h-10 w-10 shadow-md rounded-full" loading="lazy"/>
+                <span class="font-display text-2xl font-bold text-navy-dark">KMB Health</span>
+            </a>
+        </div>
+        
+        <button class="nav-toggle lg:hidden" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+            <span class="nav-toggle__bar"></span>
+        </button>
+        
+        <nav id="primary-nav" class="primary-nav lg:block" aria-label="Primary navigation">
+            <ul class="nav__list font-body text-navy-dark lg:flex lg:gap-8">
+             <li><a href="../index.html">Home</a></li>
+             <li><a href="institutions.html">Institutions</a></li>
+             <li><a href="sponsors.html">Sponsors</a></li>
+             <li><a href="volunteer.html">Volunteer</a></li>
+             <li><a href="events.html">Events</a></li>
+             <li><a class="is-active" href="gallery.html">Gallery</a></li>
+             <li><a href="about.html">About</a></li>
+             <li><a href="contact.html">Contact</a></li>
+                <li><a href="timeline.html">Milestones</a></li>
+                <li class="donate-link ml-4"><a href="donate.html" class="btn btn--primary py-2 px-4 rounded-full">Donate Now</a></li>
+            </ul>
+        </nav>
     </div>
-    <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
-      <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
-    </button>
-    <nav id="primary-nav" class="primary-nav">
-      <ul class="nav__list">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="institutions.html">Institutions</a></li>
-        <li><a href="sponsors.html">Sponsors</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="events.html">Events</a></li>
-        <li><a class="is-active" href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="donate.html">Donate</a></li>
-      </ul>
-    </nav>
-  </div>
 </header>
 
-<section id="gallery" class="section">
-  <div class="container">
-    <div class="section__head">
-      <h1 class="section-title">Photo & Video Gallery</h1>
-      <p class="section__lead">A glimpse of life at KMB—care, meals, activities, therapy and community. Filter by theme to explore.</p>
-    </div>
+<main id="main">
+    <section class="py-20 lg:py-32 bg-soft-bg/50 border-b border-gray-200">
+        <div class="container text-center">
+            <h1 class="font-display text-4xl md:text-5xl font-extrabold text-navy-dark mb-4 reveal-item">
+                <span class="gradient-text">Impact</span> Gallery
+            </h1>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto reveal-item" style="transition-delay: 0.1s;">
+                Witness the moments of dignity, healing, and community created by our missionaries and sponsors across Kerala.
+            </p>
+        </div>
+    </section>
 
-    <div class="tags-filter">
-      <button class="tag is-active" data-gallery-filter="">All</button>
-      <button class="tag" data-gallery-filter="meals">Meals</button>
-      <button class="tag" data-gallery-filter="learning">Learning</button>
-      <button class="tag" data-gallery-filter="therapy">Therapy</button>
-      <button class="tag" data-gallery-filter="community">Community</button>
-      <button class="tag" data-gallery-filter="staff">Staff</button>
-      <button class="tag" data-gallery-filter="celebration">Celebration</button>
-    </div>
+    <section class="py-16 lg:py-24 bg-white">
+        <div class="container">
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+                
+                <div class="gallery-card reveal-item" data-caption="Rural Medical Outreach: Free health check-ups for local villagers." style="transition-delay: 0.2s;">
+                    <img src="/assets/images/IMG-20250929-WA0050.jpg" alt="Missionary team conducting medical camp in a rural area." loading="lazy" data-full-src="https://placehold.co/1200x800/14b8a6/ffffff?text=Rural+Health+Outreach"/>
+                    <div class="gallery-card__overlay">
+                        <i data-lucide="scan" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
 
-    <div class="gallery-grid" id="galleryGrid">
-      <div class="gallery-panel" data-cat="meals">
-        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#14b8a6"/><circle cx="120" cy="90" r="38" fill="#fff" opacity=".25"/></svg>
-        <span class="gallery-label">Meal Service</span>
-      </div>
-      <div class="gallery-panel" data-cat="learning">
-        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#0ea5e9"/><rect x="55" y="45" width="130" height="90" rx="12" fill="#fff" opacity=".18"/></svg>
-        <span class="gallery-label">Study Session</span>
-      </div>
-      <div class="gallery-panel" data-cat="therapy">
-        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#f59e0b"/><circle cx="120" cy="90" r="52" fill="#fff" opacity=".18"/></svg>
-        <span class="gallery-label">Therapy Room</span>
-      </div>
-      <div class="gallery-panel" data-cat="community">
-        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#14b8a6"/><path d="M40 140h160v10H40z" fill="#fff" opacity=".2"/></svg>
-        <span class="gallery-label">Gathering</span>
-      </div>
-      <div class="gallery-panel" data-cat="staff">
-        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#0ea5e9"/><circle cx="80" cy="80" r="26" fill="#fff" opacity=".22"/><circle cx="160" cy="100" r="40" fill="#fff" opacity=".14"/></svg>
-        <span class="gallery-label">Staff Meeting</span>
-      </div>
-      <div class="gallery-panel" data-cat="celebration">
-        <svg viewBox="0 0 240 180"><rect width="240" height="180" rx="20" fill="#f59e0b"/><rect x="70" y="55" width="100" height="70" rx="14" fill="#fff" opacity=".25"/></svg>
-        <span class="gallery-label">Celebration</span>
-      </div>
-    </div>
+                <div class="gallery-card reveal-item" data-caption="Elderly Care: Simple moments of joy and companionship in the evening." style="transition-delay: 0.3s;">
+                    <img src="../assets/images/ElderlyPeople.jpg" alt="An elderly resident smiling while holding a missionary's hand." loading="lazy" data-full-src="https://placehold.co/1200x800/0ea5e9/ffffff?text=Elderly+Care"/>
+                    <div class="gallery-card__overlay">
+                        <i data-lucide="scan" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
 
-    <div class="cta-row mt-section">
-      <a class="btn btn--primary" href="contact.html">Contribute Media</a>
-      <a class="btn btn--outline" href="about.html">Learn More</a>
-    </div>
-  </div>
-</section>
+                <div class="gallery-card reveal-item" data-caption="Rehabilitation: Outdoor therapy and positive community interaction." style="transition-delay: 0.4s;">
+                    <img src="../assets/images/Rehabilstation.jpg" alt="Residents participating in a group activity outdoors." loading="lazy" data-full-src="https://placehold.co/1200x800/f97316/ffffff?text=Rehabilitation+Activity"/>
+                    <div class="gallery-card__overlay">
+                        <i data-lucide="scan" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
 
-<footer class="site-footer">
-  <div class="container footer__grid">
-    <div class="footer__brand">
-      <a class="brand__link" href="../index.html">
-        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo brand__logo--footer"/>
-        <span class="visually-hidden">KMB</span>
-      </a>
-      <p class="footer__about">A missionary home for compassionate care, dignity, and hope.</p>
+                <div class="gallery-card reveal-item" data-caption="Dignified Meals: Ensuring every resident receives nutritious, home-cooked food." style="transition-delay: 0.5s;">
+                    <img src="../assets/images/meal.jpg" alt="Missionary serving a meal to residents." loading="lazy" data-full-src="https://placehold.co/1200x800/0f3d52/ffffff?text=Meal+Service"/>
+                    <div class="gallery-card__overlay">
+                        <i data-lucide="scan" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-card reveal-item" data-caption="Volunteer Day: Local volunteers helping with cleaning and upkeep." style="transition-delay: 0.6s;">
+                    <img src="/assets/images/IMG-20250929-WA0018.jpg" alt="Volunteers working together at one of the centers." loading="lazy" data-full-src="https://placehold.co/1200x800/14b8a6/ffffff?text=Volunteer+Day"/>
+                    <div class="gallery-card__overlay">
+                        <i data-lucide="scan" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
+                
+                <div class="gallery-card reveal-item" data-caption="Our Home: A clean and serene environment for living and healing." style="transition-delay: 0.7s;">
+                    <img src="../assets/images/bulding.jpg" alt="Exterior shot of the Kunjachan Missionary Bhavan building." loading="lazy" data-full-src="https://placehold.co/1200x800/0ea5e9/ffffff?text=KMB+Building"/>
+                    <div class="gallery-card__overlay">
+                        <i data-lucide="scan" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-card reveal-item" data-caption="Spiritual Support: Moments of quiet prayer and reflection." style="transition-delay: 0.8s;">
+                    <img src="../assets/images/prayer.jpg" alt="A quiet moment of reflection inside the center." loading="lazy" data-full-src="https://placehold.co/1200x800/f97316/ffffff?text=Prayer+Time"/>
+                    <div class="gallery-card__overlay">
+                        <i data-lucide="scan" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
+
+                <div class="gallery-card reveal-item" data-caption="New Beginning: Welcoming a newly rescued individual with care." style="transition-delay: 0.9s;">
+                    <img src="../assets/images/IMG-20250929-WA0101.jpg" alt="Missionary welcoming a new resident to the home." loading="lazy" data-full-src="https://placehold.co/1200x800/0f3d52/ffffff?text=New+Resident"/>
+                    <div class="gallery-card__overlay">
+                        <i data-lucide="scan" class="text-white w-6 h-6"></i>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+</main>
+
+<div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" tabindex="-1">
+    <div class="lightbox__content">
+        <button class="lightbox__close" aria-label="Close image gallery">&times;</button>
+        <img id="lightbox-image" src="" alt="Full-size gallery image"/>
+        <div id="lightbox-caption" class="lightbox__caption"></div>
     </div>
-    <nav class="footer__nav">
-      <h3 class="footer__title">Links</h3>
-      <ul>
-        <li><a href="timeline.html">Timeline</a></li>        
-        <li><a href="../index.html#about">About</a></li>
-        <li><a href="volunteer.html">Volunteer</a></li>
-        <li><a href="donate.html">Donate</a></li>
-      </ul>
-    </nav>
-    <div class="footer__contact">
-      <h3 class="footer__title">Contact</h3>
-      <ul>
-        <li>Missionary Road, Kottayam</li>
-        <li>+91 481 000 0000</li>
-        <li>hello@kmb.org</li>
-      </ul>
+</div>
+
+<footer class="site-footer bg-navy-dark text-white">
+    <div class="container grid md:grid-cols-4 gap-10 pt-16 pb-10">
+        <div class="footer__brand">
+            <a class="brand__link flex items-center mb-4" href="../index.html">
+                <img src="../assets/logo/kunjachanMissionaryLogo.png" onerror="this.src='https://placehold.co/40x40/14b8a6/ffffff?text=HC'" alt="KMB Health Center Logo" class="brand__logo h-8 w-8 mr-2 rounded-full" loading="lazy"/>
+                <span class="font-display text-xl font-bold text-white">KMB Health</span>
+            </a>
+            <p class="text-gray-400 text-sm">A missionary home for compassionate care, dignity, and essential health aid.</p>
+        </div>
+        
+        <nav class="footer__nav" aria-label="Footer links">
+            <h3 class="text-primary-teal font-display text-lg font-bold mb-4">Explore</h3>
+            <ul class="space-y-2 text-gray-400 text-sm">
+                <li><a href="about.html" class="hover:text-primary-teal transition">About Our Mission</a></li>
+                <li><a href="timeline.html" class="hover:text-primary-teal transition">Full Project Timeline</a></li>
+                <li><a href="institutions.html" class="hover:text-primary-teal transition">Rural Network</a></li>
+                <li><a href="sponsors.html" class="hover:text-primary-teal transition">Sponsor Our Work</a></li>
+                <li><a href="volunteer.html" class="hover:text-primary-teal transition">Volunteer</a></li>
+            </ul>
+        </nav>
+        
+        <div class="footer__contact">
+            <h3 class="text-primary-teal font-display text-lg font-bold mb-4">Connect</h3>
+            <ul class="space-y-2 text-gray-400 text-sm">
+                <li class="flex items-center"><i data-lucide="map-pin" class="w-4 h-4 mr-2 text-primary-blue"></i>Missionary Road, Kottayam, Kerala</li>
+                <li class="flex items-center"><i data-lucide="phone" class="w-4 h-4 mr-2 text-primary-blue"></i>+91 481 000 0000</li>
+                <li class="flex items-center"><a href="mailto:care@kmbhealth.org" class="hover:text-primary-teal transition"><i data-lucide="mail" class="w-4 h-4 mr-2 text-primary-blue"></i>care@kmbhealth.org</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer__cta">
+            <h3 class="text-primary-teal font-display text-lg font-bold mb-4">Support Our Work</h3>
+            <ul class="space-y-4 text-gray-400">
+                <li>
+                    <a href="volunteer.html" class="bg-primary-teal text-white py-2 px-4 rounded-full font-semibold inline-flex items-center justify-center w-full hover:bg-[#10a395] transition shadow-lg">
+                        <i data-lucide="users" class="w-4 h-4 mr-2"></i> Become a Volunteer
+                    </a>
+                </li>
+                <li>
+                    <a href="donate.html" class="bg-accent-orange text-navy-dark py-2 px-4 rounded-full font-semibold inline-flex items-center justify-center w-full hover:bg-[#ff8c3a] transition shadow-lg">
+                        <i data-lucide="heart" class="w-4 h-4 mr-2"></i> Donate Now
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="footer__newsletter">
-      <h3 class="footer__title">Newsletter</h3>
-      <form class="footer__form">
-        <label class="visually-hidden" for="footerEmail">Email</label>
-        <input id="footerEmail" type="email" placeholder="Enter your email" required/>
-        <button type="submit" class="btn btn--accent">Subscribe</button>
-      </form>
+    
+    <div class="container border-t border-gray-700 pt-4 text-center">
+        <p class="text-gray-500 text-xs">&copy; <span id="year"></span> Kunjachan Missionary Bhavan Health Center. All rights reserved.</p>
     </div>
-  </div>
-  <div class="container footer__bottom">
-    <p>&copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights reserved.</p>
-  </div>
 </footer>
-<script src="../assets/js/main.js"></script>
+
+<script>
+    // --- JavaScript for Dynamic Effects and Navigation ---
+
+    // 1. Global Utility Initialization (Lucide Icons & Year)
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof lucide !== 'undefined') {
+            lucide.createIcons();
+        }
+        document.getElementById('year').textContent = new Date().getFullYear();
+    });
+
+    // 2. Mobile Nav Toggle Logic
+    const navToggle = document.querySelector('.nav-toggle');
+    const primaryNav = document.getElementById('primary-nav');
+
+    const toggleNav = () => {
+        const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isOpen);
+        primaryNav.classList.toggle('open');
+        document.body.classList.toggle('overflow-hidden', !isOpen);
+    };
+
+    navToggle.addEventListener('click', toggleNav);
+
+    // Close nav when clicking links (for mobile usability)
+    document.querySelectorAll('.nav__list a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (primaryNav.classList.contains('open')) {
+                toggleNav(); 
+            }
+        });
+    });
+
+    // 3. Scroll Reveal Effect (Intersection Observer)
+    const observerOptions = {
+        threshold: 0.1, 
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('in-view');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-item').forEach(item => {
+        observer.observe(item);
+    });
+
+    // 4. Image Lightbox (Popup) Logic - With Transitions
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const closeButton = document.querySelector('.lightbox__close');
+    const galleryCards = document.querySelectorAll('.gallery-card');
+
+    const openLightbox = (imgElement) => {
+        const fullSrc = imgElement.getAttribute('data-full-src') || imgElement.src;
+        const captionText = imgElement.closest('.gallery-card').getAttribute('data-caption') || imgElement.alt;
+        
+        lightboxImg.src = fullSrc;
+        lightboxImg.alt = captionText;
+        lightboxCaption.textContent = captionText;
+        lightbox.classList.add('open');
+        lightbox.focus(); // Focus for accessibility/closing
+        document.body.classList.add('overflow-hidden');
+    };
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('open');
+        document.body.classList.remove('overflow-hidden');
+        // Clear content after transition completes to prevent flashing on next open
+        setTimeout(() => {
+            lightboxImg.src = "";
+            lightboxCaption.textContent = "";
+        }, 300); // 300ms matches the CSS transition time
+    };
+
+    galleryCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const img = card.querySelector('img');
+            openLightbox(img);
+        });
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+    
+    // Close on overlay click
+    lightbox.addEventListener('click', (e) => {
+        // Only close if clicking the background, not the image content
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Close on ESC key press
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+            closeLightbox();
+        }
+    });
+
+</script>
 </body>
 </html>
