@@ -53,6 +53,9 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
+body.no-scroll {
+  overflow: hidden;
+}
 img,
 svg {
   max-width: 100%;
@@ -546,12 +549,17 @@ p {
   margin-bottom: var(--space-4);
 }
 
+/* Consolidated volunteer illustration (deduped) */
 .illustration--volunteer {
-  max-width: 320px;
-  padding: var(--space-3);
-  aspect-ratio: 4 / 5;
-  margin-top: 0;
-  align-self: flex-start;
+  max-width: 340px;
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+  margin-inline: auto;
 }
 
 .volunteer-details {
@@ -1164,17 +1172,6 @@ p {
   font-size: 0.75rem;
   color: var(--text-faint);
 }
-.illustration--volunteer {
-  max-width: 360px;
-  width: 100%;
-  aspect-ratio: 4/5;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-xl);
-  padding: var(--space-4);
-  box-shadow: var(--shadow-sm);
-  margin-inline: auto;
-}
 
 /* Responsive volunteer grid balance */
 @media (min-width: 980px) {
@@ -1258,4 +1255,149 @@ p {
   50% {
     transform: translateY(-14px);
   }
+}
+
+/* ---------- Timeline (new professional template) ---------- */
+
+.timeline-wrap {
+  position: relative;
+  margin-top: var(--space-7);
+  padding-left: 1.25rem;
+}
+@media (min-width: 820px) {
+  .timeline-wrap {
+    padding-left: 0;
+  }
+}
+
+/* Rail */
+.timeline-rail {
+  position: absolute;
+  left: 1rem;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, var(--brand-teal), var(--brand-sky));
+  border-radius: 4px;
+  opacity: 0.3;
+}
+@media (min-width: 820px) {
+  .timeline-rail {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+/* Items */
+.tl-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr;
+  margin-bottom: var(--space-7);
+}
+.tl-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Dot */
+.tl-dot {
+  position: absolute;
+  left: 0.8rem;
+  top: 0.4rem;
+  width: 14px;
+  height: 14px;
+  background: var(--brand-teal);
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: var(--shadow-xs);
+}
+@media (min-width: 820px) {
+  .tl-dot {
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* Sides */
+@media (min-width: 820px) {
+  .tl-item__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+  .tl-item:nth-child(odd) .tl-card {
+    grid-column: 1/2;
+    justify-self: end;
+  }
+  .tl-item:nth-child(odd) .tl-date {
+    grid-column: 2/3;
+    justify-self: start;
+  }
+  .tl-item:nth-child(even) .tl-card {
+    grid-column: 2/3;
+    justify-self: start;
+  }
+  .tl-item:nth-child(even) .tl-date {
+    grid-column: 1/2;
+    justify-self: end;
+  }
+}
+
+.tl-date {
+  font-weight: 700;
+  color: var(--brand-teal);
+  letter-spacing: 0.04em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  margin-bottom: var(--space-3);
+  display: inline-block;
+}
+
+.tl-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-sm);
+  min-width: min(520px, 100%);
+}
+
+.tl-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+.tl-badge {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid var(--border);
+  color: var(--text-faint);
+}
+.tl-badge--planned { background: #eef8f8; color: var(--brand-teal); border-color: #bfe9e3; }
+.tl-badge--progress { background: #fff7ed; color: #d97706; border-color: #f5d08f; }
+.tl-badge--done { background: #ecfdf5; color: #059669; border-color: #b7f0d8; }
+
+/* Reveal animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .5s ease, transform .5s ease, box-shadow .3s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Inline form status */
+.form-status {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--brand-teal);
 }

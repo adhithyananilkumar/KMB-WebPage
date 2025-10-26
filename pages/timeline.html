@@ -3,23 +3,33 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>BCA Website Timeline</title>
+  <title>KMB Project Timeline</title>
+  <meta name="description" content="Editable, professional timeline of the KMB website project. Update month, year, and progress easily."/>
+  <meta property="og:title" content="KMB Project Timeline"/>
+  <meta property="og:description" content="A clean, animated timeline for the KMB website project — simple to edit via JSON."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:image" content="../assets/logo/kunjachanMissionaryLogo.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" href="../assets/logo/kunjachanMissionaryLogo.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="../assets/css/style.css"/>
 </head>
 <body>
+<a class="skip-link" href="#timeline">Skip to content</a>
 <header class="site-header">
   <div class="container header__bar">
     <div class="brand">
       <a href="../index.html" class="brand__link">
-        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="BCA Logo" class="brand__logo"/>
-        <span class="visually-hidden">BCA 2024–2028</span>
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo"/>
+        <span class="visually-hidden">KMB</span>
       </a>
     </div>
     <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation">
       <span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span><span class="nav-toggle__bar"></span>
     </button>
-    <nav id="primary-nav" class="primary-nav">
+    <nav id="primary-nav" class="primary-nav" aria-label="Primary navigation">
       <ul class="nav__list">
         <li><a href="../index.html">Home</a></li>
         <li><a href="institutions.html">Institutions</a></li>
@@ -29,8 +39,7 @@
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="donate.html">Donate</a></li>
-        <li><a class="is-active" href="timeline.html">Timeline</a></li>
+        <li><a class="is-active" aria-current="page" href="timeline.html">Timeline</a></li>
       </ul>
     </nav>
   </div>
@@ -40,102 +49,26 @@
   <div class="container">
     <div class="section__head">
       <h1 class="section-title">Website Development Timeline</h1>
-      <p class="section__lead">Chronological history of the BCA 2024–2028 student website project with credits and milestones.</p>
     </div>
 
-    <div class="cards" id="timelineCards" role="list">
+    <!-- Renders here -->
+    <div class="timeline-wrap" id="timelineMount" aria-live="polite"></div>
 
-      <!-- Phase 1: Planning -->
-      <article class="card timeline" data-name="July 2024" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#14b8a6"/>
-            <path d="M20 30h20v6H20z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">July 2024 – Project Initiation</h3>
-          <p class="card__desc">BCA 2024–2028 students brainstormed and planned the website project.</p>
-          <ul class="card__meta">
-            <li><strong>Team Leads:</strong> Aadhithyan & Group</li>
-            <li><strong>Phase:</strong> Planning</li>
-          </ul>
-        </div>
-      </article>
+    <!-- Edit this JSON only: update date, title, desc, phase, owner, and status -->
+    <!-- status can be "planned", "progress", or "done" -->
+    <script id="timelineData" type="application/json">
+      [
+        { "date": "2025-01", "title": "Initiation & Scope", "desc": "Kick-off, goals, success metrics and scope locked.", "phase": "Planning", "owner": "Core Team", "status": "done" },
+        { "date": "2025-02", "title": "Information Architecture", "desc": "Content map, navigation schema and page inventory.", "phase": "Planning", "owner": "Content + UX", "status": "done" },
+        { "date": "2025-03", "title": "UI Design System", "desc": "Tokens, components, and accessibility rules finalized.", "phase": "Design", "owner": "Design", "status": "progress" },
+        { "date": "2025-04", "title": "Front-end Implementation", "desc": "HTML/CSS/JS components, responsive and JS filters.", "phase": "Development", "owner": "Front-end", "status": "planned" },
+        { "date": "2025-05", "title": "Integration & Forms", "desc": "Hook forms to backend services and integrate analytics.", "phase": "Development", "owner": "Full-stack", "status": "planned" },
+        { "date": "2025-06", "title": "QA & Accessibility", "desc": "Test, fix, and audit accessibility and performance.", "phase": "Testing", "owner": "QA", "status": "planned" },
+        { "date": "2025-07", "title": "Launch Readiness", "desc": "Content freeze, CDN, SEO, and monitoring setup.", "phase": "Pre‑Launch", "owner": "All", "status": "planned" }
+      ]
+    </script>
 
-      <!-- Phase 2: Design -->
-      <article class="card timeline" data-name="September 2024" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#0ea5e9"/>
-            <path d="M18 42c2-10 8-15 12-15s10 5 12 15H18z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">September 2024 – UI/UX Design</h3>
-          <p class="card__desc">Wireframes, layout, color scheme, and typography finalized.</p>
-          <ul class="card__meta">
-            <li><strong>Design Team:</strong> UI/UX Students</li>
-            <li><strong>Phase:</strong> Design</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Phase 3: Development -->
-      <article class="card timeline" data-name="January 2025" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#f59e0b"/>
-            <path d="M20 38h20v6H20zM18 32c3-8 21-8 24 0v4H18v-4z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">January 2025 – Development Started</h3>
-          <p class="card__desc">Front-end with HTML, CSS, JS; back-end integrated with Flask & SQL demo database.</p>
-          <ul class="card__meta">
-            <li><strong>Developers:</strong> Front-end & Back-end Students</li>
-            <li><strong>Phase:</strong> Development</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Phase 4: Testing -->
-      <article class="card timeline" data-name="June 2025" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#a855f7"/>
-            <path d="M18 30h24v6H18z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">June 2025 – Testing & Feedback</h3>
-          <p class="card__desc">Bugs fixed, responsive layout refined, feedback incorporated.</p>
-          <ul class="card__meta">
-            <li><strong>QA Team:</strong> Testing Students</li>
-            <li><strong>Phase:</strong> Testing</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- Phase 5: Launch -->
-      <article class="card timeline" data-name="August 2025" role="listitem">
-        <div class="timeline__icon">
-          <svg viewBox="0 0 60 60" aria-hidden="true">
-            <circle cx="30" cy="30" r="30" fill="#f43f5e"/>
-            <path d="M18 30h24v6H18z" fill="#fff"/>
-          </svg>
-        </div>
-        <div class="card__body">
-          <h3 class="card__title">August 2025 – Website Launch</h3>
-          <p class="card__desc">Official release of BCA 2024–2028 student project website. Credits added for all contributors.</p>
-          <ul class="card__meta">
-            <li><strong>Credits:</strong> BCA 2024–2028 Students & Faculty Mentors</li>
-            <li><strong>Phase:</strong> Launch</li>
-          </ul>
-        </div>
-      </article>
-
-    </div>
+    
   </div>
 </section>
 
@@ -143,12 +76,12 @@
   <div class="container footer__grid">
     <div class="footer__brand">
       <a class="brand__link" href="../index.html">
-        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="BCA Logo" class="brand__logo brand__logo--footer"/>
-        <span class="visually-hidden">BCA</span>
+        <img src="../assets/logo/kunjachanMissionaryLogo.png" alt="KMB Logo" class="brand__logo brand__logo--footer"/>
+        <span class="visually-hidden">KMB</span>
       </a>
-      <p class="footer__about">Website created by BCA 2024–2028 students under faculty guidance.</p>
+      <p class="footer__about">Website created and maintained by Kunjachan Missionary Bhavan team.</p>
     </div>
-    <nav class="footer__nav">
+    <nav class="footer__nav" aria-label="Footer">
       <h3 class="footer__title">Links</h3>
       <ul>
         <li><a href="../index.html#about">About</a></li>
@@ -161,7 +94,7 @@
       <ul>
         <li>College Campus, City</li>
         <li>+91 000 000 0000</li>
-        <li>info@bca2024-2028.org</li>
+        <li>info@kmb.org</li>
       </ul>
     </div>
     <div class="footer__newsletter">
@@ -174,7 +107,7 @@
     </div>
   </div>
   <div class="container footer__bottom">
-    <p>&copy; <span id="year"></span> BCA 2024–2028 Students. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Kunjachan Missionary Bhavan. All rights reserved.</p>
   </div>
 </footer>
 <script src="../assets/js/main.js"></script>
